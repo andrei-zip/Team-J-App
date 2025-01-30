@@ -12,11 +12,11 @@
 <script>
     function getLocation(){
         if (navigator.geolocation) {
-            //TODO - Geolocation is supported by browser.
+
             navigator.geolocation.getCurrentPosition(showPosition);
         }
         else {
-            //TODO - Geolocation is NOT supported by browser.
+
             alert("Geolocation is not supported by your browser.");
         }
     }
