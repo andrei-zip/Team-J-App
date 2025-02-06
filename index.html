@@ -80,7 +80,7 @@
         if (qrscanStatus == false) {
             Instascan.Camera.getCameras().then(function (cameras) {
                 if (cameras.length > 0) {
-                    scanner.start(cameras[0]);
+                    scanner.start(cameras[1]);
                 } else {
                     console.error('No cameras found.');
                     alert("No cameras found.");
@@ -104,7 +104,7 @@
             scanner.stop();
             Instascan.Camera.getCameras().then(function (cameras) {
                 if (cameras.length > 0) {
-                    scanner.start(cameras[1]);
+                    scanner.start(cameras[0]);
                 } else {
                     console.error('No cameras found.');
                     alert("No cameras found.");
@@ -113,7 +113,19 @@
                 console.error(e);
             });
             qrscanChange = true;
-            console.log(qrscanChange);
+        } else {
+            scanner.stop();
+            Instascan.Camera.getCameras().then(function (cameras) {
+                if (cameras.length > 0) {
+                    scanner.start(cameras[0]);
+                } else {
+                    console.error('No cameras found.');
+                    alert("No cameras found.");
+                }
+            }).catch(function (e) {
+                console.error(e);
+            });
+            qrscanChange = true;
         }
     }
     scanner.addListener('scan', function (content) {
@@ -121,6 +133,7 @@
         document.getElementById("content").innerHTML = content;
         scanner.stop();
         qrscanStatus = false;
+        qrscanChange = false;
     });
 
 </script>
