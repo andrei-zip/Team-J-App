@@ -73,14 +73,16 @@
     };
     var scanner = new Instascan.Scanner(opts);
 
+    let allCameras;
+    let cameraIndex = 0;
     let qrscanStatus = false;
-    let qrscanChange = false;
 
     function openQRscan() {
         if (qrscanStatus == false) {
             Instascan.Camera.getCameras().then(function (cameras) {
+                allCameras = cameras;
                 if (cameras.length > 0) {
-                    scanner.start(cameras[1]);
+                    scanner.start(cameras[cameraIndex]);
                 } else {
                     console.error('No cameras found.');
                     alert("No cameras found.");
@@ -92,6 +94,7 @@
         } else {
             Instascan.Camera.getCameras().then(function (cameras) {
                 scanner.stop();
+                cameraIndex=0;
             }).catch(function (e) {
                 console.error(e);
             });
@@ -100,11 +103,17 @@
     }
 
     function changeCamera(){
-        if (qrscanStatus==true && qrscanChange == false){
+        if (qrscanStatus = true){
+            cameraIndex++;
+            if (cameraIndex > allCameras.length) {
+                    cameraIndex = 0;
+            }
             scanner.stop();
+
             Instascan.Camera.getCameras().then(function (cameras) {
+                allCameras = cameras;
                 if (cameras.length > 0) {
-                    scanner.start(cameras[0]);
+                    scanner.start(cameras[cameraIndex]);
                 } else {
                     console.error('No cameras found.');
                     alert("No cameras found.");
@@ -112,28 +121,15 @@
             }).catch(function (e) {
                 console.error(e);
             });
-            qrscanChange = true;
-        } else {
-            scanner.stop();
-            Instascan.Camera.getCameras().then(function (cameras) {
-                if (cameras.length > 0) {
-                    scanner.start(cameras[0]);
-                } else {
-                    console.error('No cameras found.');
-                    alert("No cameras found.");
-                }
-            }).catch(function (e) {
-                console.error(e);
-            });
-            qrscanChange = true;
+            qrscanStatus = true;
         }
+
     }
     scanner.addListener('scan', function (content) {
         console.log(content);
         document.getElementById("content").innerHTML = content;
         scanner.stop();
         qrscanStatus = false;
-        qrscanChange = false;
     });
 
 </script>
