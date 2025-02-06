@@ -92,20 +92,16 @@
             });
             qrscanStatus = true;
         } else {
-            Instascan.Camera.getCameras().then(function (cameras) {
                 scanner.stop();
                 cameraIndex=0;
-            }).catch(function (e) {
-                console.error(e);
-            });
-            qrscanStatus = false;
+                qrscanStatus = false;
         }
     }
 
     function changeCamera(){
         if (qrscanStatus === true){
             cameraIndex++;
-            if (cameraIndex > allCameras.length) {
+            if (cameraIndex >= allCameras.length) {
                     cameraIndex = 0;
             }
             scanner.stop();
