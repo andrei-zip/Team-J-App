@@ -38,6 +38,8 @@
     <script src="js/instascan.min.js"></script>
 </head>
 <body>
+<button onclick="openQRscan()"> Scan QR</button>
+<button onclick="changeCamera()"> Change camera</button>
 <video id="preview"></video>
 <div style="margin: 20px; padding: 20px; background-color: black; color: white; text-align: center;" id="content"></div>
 <script>
@@ -71,20 +73,54 @@
     };
     var scanner = new Instascan.Scanner(opts);
 
-    Instascan.Camera.getCameras().then(function (cameras) {
-        if (cameras.length > 0) {
-            scanner.start(cameras[0]);
-        } else {
-            console.error('No cameras found.');
-            alert("No cameras found.");
-        }
-    }).catch(function (e) {
-        console.error(e);
-    });
+    let qrscanStatus = false;
+    let qrscanChange = false;
 
+    function openQRscan() {
+        if (qrscanStatus == false) {
+            Instascan.Camera.getCameras().then(function (cameras) {
+                if (cameras.length > 0) {
+                    scanner.start(cameras[0]);
+                } else {
+                    console.error('No cameras found.');
+                    alert("No cameras found.");
+                }
+            }).catch(function (e) {
+                console.error(e);
+            });
+            qrscanStatus = true;
+        } else {
+            Instascan.Camera.getCameras().then(function (cameras) {
+                scanner.stop();
+            }).catch(function (e) {
+                console.error(e);
+            });
+            qrscanStatus = false;
+        }
+    }
+
+    function changeCamera(){
+        if (qrscanStatus==true && qrscanChange == false){
+            scanner.stop();
+            Instascan.Camera.getCameras().then(function (cameras) {
+                if (cameras.length > 0) {
+                    scanner.start(cameras[1]);
+                } else {
+                    console.error('No cameras found.');
+                    alert("No cameras found.");
+                }
+            }).catch(function (e) {
+                console.error(e);
+            });
+            qrscanChange = true;
+            console.log(qrscanChange);
+        }
+    }
     scanner.addListener('scan', function (content) {
         console.log(content);
         document.getElementById("content").innerHTML = content;
+        scanner.stop();
+        qrscanStatus = false;
     });
 
 </script>
