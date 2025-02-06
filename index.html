@@ -78,7 +78,7 @@
     let qrscanStatus = false;
 
     function openQRscan() {
-        if (qrscanStatus == false) {
+        if (qrscanStatus === false) {
             Instascan.Camera.getCameras().then(function (cameras) {
                 allCameras = cameras;
                 if (cameras.length > 0) {
@@ -103,7 +103,7 @@
     }
 
     function changeCamera(){
-        if (qrscanStatus = true){
+        if (qrscanStatus === true){
             cameraIndex++;
             if (cameraIndex > allCameras.length) {
                     cameraIndex = 0;
