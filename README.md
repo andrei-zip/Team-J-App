@@ -4,4 +4,7 @@ The team members are:
 <ul>
   <li>Moraru Andrei</li>
   <li>Roman Olegovich</li>
+  <li>Viktor Minchenko</li>
+  <li>Styiliani Antoniou</li>
+
 </ul>
