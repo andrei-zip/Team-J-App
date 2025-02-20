@@ -1,0 +1,58 @@
+p {
+    color: #B7E1E0;
+}
+
+.style {
+    background-color: #181C1D;
+    padding: 3px;
+    border-top: 5px solid red;
+    border-right: 5px double green;
+    border-bottom: 5px dashed blue;
+    border-left: 5px groove orange;
+}
+
+header, footer {
+    background-color: darkcyan;
+    color: grey;
+    padding: 5px;
+}
+
+* {
+    font-family: "Arial", Arial, sans-serif;
+}
+
+.answer {
+    font-family: "Courier New";
+}
+
+h1 {
+    font-family: "Impact";
+}
+
+footer small {
+    font-size: 11px;
+}
+
+main {
+    font-size: 1.2em;
+    text-align: center;
+    position: relative;
+}
+
+footer {
+    text-align: right;
+}
+
+#hint {
+    background-color: yellow;
+    position: absolute;
+    top: 35px;
+    right: 50px;
+    margin: 10px;
+    padding: 10px 15px;
+    border: 2px dotted red;
+}
+
+#hint p {
+    margin: 0;
+}
