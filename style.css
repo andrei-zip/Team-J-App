@@ -1,9 +1,8 @@
 p {
-    color: #B7E1E0;
+    color: #B7E1E0; /*The main color of text, its a very bright teal color*/
 }
-
 .style {
-    background-color: #181C1D;
+    background-color: #181C1D; /*Its a really dark of a turquoise (cyan) color*/
     padding: 3px;
     border-top: 5px solid red;
     border-right: 5px double green;
