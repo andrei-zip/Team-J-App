@@ -3,7 +3,7 @@ p {
 }
 
 body{
-    background-color: #194b52; /*Its a really dark of a turquoise (cyan) color*/
+    background-color: #181C1D; /*Its a really dark of a turquoise (cyan) color*/
 }
 .style {
     background-color: #181C1D; /*Its a really dark of a turquoise (cyan) color*/
@@ -25,11 +25,11 @@ header, footer {
 }
 
 .answer {
-    font-family: "Courier New";
+    font-family: "Courier New", Courier, monospace;
 }
 
 h1 {
-    font-family: "Impact";
+    font-family: "Impact", Impact, serif;
 }
 
 footer small {
