@@ -1,6 +1,10 @@
 p {
     color: #B7E1E0; /*The main color of text, its a very bright teal color*/
 }
+
+body{
+    background-color: #181C1D; /*Its a really dark of a turquoise (cyan) color*/
+}
 .style {
     background-color: #181C1D; /*Its a really dark of a turquoise (cyan) color*/
     padding: 3px;
