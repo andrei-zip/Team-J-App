@@ -1,62 +1,90 @@
-p {
-    color: #B7E1E0;
+/* Primary colors from the "Ghost Opus Eponymous" */
+:root {
+    --dark-purple: #322737;
+    --medium-purple: #453f45;
+    --dark-cyan: #296b75;
+    --light-green: #5ccdaf;
+    --mint-green: #9ff7d6;
 }
 
-body{
-    background-color: #194b52;
-}
-.style {
-    background-color: #181C1D;
-    padding: 3px;
-    border-top: 5px solid red;
-    border-right: 5px double green;
-    border-bottom: 5px dashed blue;
-    border-left: 5px groove orange;
-}
-
-header, footer {
-    background-color: darkcyan;
-    color: grey;
-    padding: 5px;
-}
-
-* {
-    font-family: "Arial", Arial, sans-serif;
-}
-
-.answer {
-    font-family: "Courier New", Courier, monospace;
-}
-
-h1 {
-    color: #B7E1E0;
-    font-family: "Impact", Impact, serif;
-}
-
-footer small {
-    font-size: 11px;
-}
-
-main {
-    font-size: 1.2em;
-    text-align: center;
-    position: relative;
-}
-
-footer {
-    text-align: right;
-}
-
-#hint {
-    background-color: yellow;
-    position: absolute;
-    top: 35px;
-    right: 50px;
-    margin: 10px;
-    padding: 10px 15px;
-    border: 2px dotted red;
-}
-
-#hint p {
+/* General styles for the body */
+body {
+    background-color: var(--dark-purple); /* Sets the dark purple background */
+    color: var(--mint-green); /* Sets the mint green text color */
+    font-family: Arial, sans-serif; /* Main font */
     margin: 0;
+    padding: 0;
+}
+
+/* Styles for headings */
+h1, h2, h3 {
+    color: var(--light-green); /* Light green color for headings */
+    text-align: center;
+}
+
+/* Styles for the main container */
+.container {
+    width: 80%;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: var(--medium-purple); /* Medium purple background for the container */
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); /* Shadow effect for depth */
+}
+
+/* Styles for buttons */
+.button {
+    display: inline-block;
+    padding: 10px 20px;
+    margin: 10px 0;
+    background-color: var(--dark-cyan); /* Dark cyan button background */
+    color: var(--dark-purple); /* Dark purple button text */
+    text-align: center;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease; /* Smooth background transition on hover */
+}
+
+.button:hover {
+    background-color: var(--light-green); /* Changes background on hover */
+}
+
+/* Styles for links */
+a {
+    color: var(--mint-green); /* Mint green link color */
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline; /* Underline link on hover */
+}
+
+/* Styles for forms */
+form {
+    margin-top: 20px;
+}
+
+input[type="text"], input[type="password"], textarea {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid var(--dark-cyan);
+    border-radius: 5px;
+    background-color: var(--medium-purple);
+    color: var(--mint-green);
+}
+
+input[type="submit"] {
+    background-color: var(--dark-cyan); /* Dark cyan background for submit button */
+    color: var(--dark-purple);
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+input[type="submit"]:hover {
+    background-color: var(--light-green); /* Changes background on hover */
 }
