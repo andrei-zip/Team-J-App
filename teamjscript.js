@@ -7,3 +7,4 @@ async function letsHunt(){
     document.getElementById("myDiv").innerHTML = reply;
 }
 letsHunt();
+
