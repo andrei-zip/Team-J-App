@@ -6,7 +6,7 @@ async function letsHunt() {
 
     let treasureHuntArray = json.treasureHunts;
 
-    let ListHTML = "<ul>"
+    let listHTML = "<ul>"
 
     for (let i =0; i < treasureHuntArray.length; i++) {
         listHTML +=
