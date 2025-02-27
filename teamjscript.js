@@ -1,10 +1,10 @@
-const THE_BASE_ULR = 'https://codecyprus.org/th/api/'
+const THE_BASE_ULR = 'https://codecyprus.org/th/api/';
 
 async function letsHunt() {
     const response = await fetch(THE_BASE_ULR + 'list');
-    const reply = await response.json();
+    const json = await response.json();
 
-    let treasureHuntArray = reply.treasureHunts;
+    let treasureHuntArray = json.treasureHunts;
 
     let ListHTML = "<ul>"
 
@@ -19,3 +19,4 @@ async function letsHunt() {
     listHTML += "</ul>";
     document.getElementById("treasureHunts").innerHTML = listHTML;
 }
+letsHunt();
