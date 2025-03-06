@@ -1,7 +1,7 @@
-const THE_BASE_ULR = 'https://codecyprus.org/th/api/';
+const THE_LIST_BASE_URL = 'https://codecyprus.org/th/api/';
 
 async function letsHunt() {
-    const response = await fetch(THE_BASE_ULR + 'list');
+    const response = await fetch(THE_LIST_BASE_URL + 'list');
     const json = await response.json();
 
     let treasureHuntArray = json.treasureHunts;
@@ -13,10 +13,11 @@ async function letsHunt() {
             "<li>" +
             "<b>" + treasureHuntArray[i].name + "</b><br>" +
             treasureHuntArray[i].description + "<br>" +
-            "<button onclick=''>START</button>" +
+            "<a class='button' onclick='startFunction()'>START</a>" +
             "</li>";
     }
     listHTML += "</ul>";
     document.getElementById("treasureHunts").innerHTML = listHTML;
 }
 letsHunt();
+
