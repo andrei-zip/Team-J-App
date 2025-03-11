@@ -19,5 +19,8 @@ async function letsHunt() {
     listHTML += "</ul>";
     document.getElementById("treasureHunts").innerHTML = listHTML;
 }
-letsHunt();
 
+function startFunction(treasureHuntId) {
+    sessionStorage.setItem('selectedTreasureHuntId', treasureHuntId);
+    window.location.href = 'app.html';
+}
