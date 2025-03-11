@@ -2,27 +2,28 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewpoint" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="style.css">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"> <!-- Im not sure that it could be useful, but probably it might be useful for additional styling in project-->
-  <title>Lets Hunt!</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+  <title>Let's Hunt!</title>
 </head>
-<header>
-  <div class="logo"></div>
-  <div></div>
-  <br/>
-  <br/>
-</header>
 <body>
-<h1>Treasure Hunts!</h1>
-<p>Select one of the treasure hunts!</p>
+<header>
+  <h1>Treasure Hunts!</h1>
+  <p>Select one of the treasure hunts!</p>
+</header>
 
-<div id="treasureHunts"></div>
-<script src="js/start.js"></script>
-</body>
+<main>
+  <button id="btnLoadHunts">Load Hunts</button>
+  <div id="treasureHunts"></div>
+</main>
 
 <footer>
-  <br/>
-  <div class="footer"></div>
+  <p>Team-J-App</p>
 </footer>
+
+<script src="js/session.js"></script>
+<script src="js/list.js"></script>
+<script src="js/start.js"></script>
+</body>
 </html>
