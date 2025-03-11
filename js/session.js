@@ -1,13 +1,8 @@
-const THE_LIST_BASE_URL = 'https://codecyprus.org/th/api/';
-
-// Функция для запуска охоты и создания сессии
 async function startSession(treasureHuntId) {
-
     const playerName = document.getElementById("playerName").value.trim();
-    const appId = "Team-J-App"; // ID application
 
-    // Формируем URL для запроса сессии
-    const startUrl = `${API_URL}start?player=${encodeURIComponent(playerName)}&app=${encodeURIComponent(appId)}&treasure-hunt-id=${encodeURIComponent(treasureHuntId)}`;
+    const appId = "Team-J-App"; // ID приложения
+    const startUrl = `${THE_LIST_BASE_URL}start?player=${encodeURIComponent(playerName)}&app=${encodeURIComponent(appId)}&treasure-hunt-id=${encodeURIComponent(treasureHuntId)}`;
 
     try {
         console.log("Запрос на создание сессии:", startUrl);
@@ -15,26 +10,28 @@ async function startSession(treasureHuntId) {
         const data = await response.json();
 
         if (data.status === "OK") {
-            localStorage.setItem("sessionId", data.session);
-            console.log("Сессия успешно создана:", data.session);
+            localStorage.setItem("sessionId", data.sessionId);
+            console.log("Сессия успешно создана:", data.sessionId);
             window.location.href = "app.html";
         } else {
             console.error("Ошибка создания сессии:", data.errorMessages);
-            alert("Ошибка при запуске охоты: " + data.errorMessages.join(", "));
+            alert("Error: " + data.errorMessages.join(", "));
         }
     } catch (error) {
-        console.error("Ошибка сети при создании сессии:", error);
-        alert("Ошибка сети. Проверьте соединение.");
+        console.error("Network error while creating session:", error);
+        alert("Network error. Check your connection.");
     }
 }
 
-// Функция для получения идентификатора сессии
+/**
+ * Функция для получения sessionId. Function for receiving sessionId
+ */
 function getSessionId() {
     return localStorage.getItem("sessionId");
 }
 
-// Функция для завершения охоты (если потребуется)
+
 function endSession() {
     localStorage.removeItem("sessionId");
-    console.log("Сессия завершена.");
+    console.log("Session ended.");
 }
