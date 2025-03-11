@@ -1,20 +1,20 @@
 async function startSession(treasureHuntId) {
     const playerName = document.getElementById("playerName").value.trim();
 
-    const appId = "Team-J-App"; // ID приложения
+    const appId = "Team-J-App"; // ID application
     const startUrl = `${THE_LIST_BASE_URL}start?player=${encodeURIComponent(playerName)}&app=${encodeURIComponent(appId)}&treasure-hunt-id=${encodeURIComponent(treasureHuntId)}`;
 
     try {
-        console.log("Запрос на создание сессии:", startUrl);
+        console.log("Request of creating session:", startUrl);
         const response = await fetch(startUrl);
         const data = await response.json();
 
         if (data.status === "OK") {
             localStorage.setItem("sessionId", data.sessionId);
-            console.log("Сессия успешно создана:", data.sessionId);
+            console.log("Session successfully created:", data.sessionId);
             window.location.href = "app.html";
         } else {
-            console.error("Ошибка создания сессии:", data.errorMessages);
+            console.error("Error of creating session:", data.errorMessages);
             alert("Error: " + data.errorMessages.join(", "));
         }
     } catch (error) {
@@ -24,7 +24,7 @@ async function startSession(treasureHuntId) {
 }
 
 /**
- * Функция для получения sessionId. Function for receiving sessionId
+ * Function for receiving sessionId
  */
 function getSessionId() {
     return localStorage.getItem("sessionId");
