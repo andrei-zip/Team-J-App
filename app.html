@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Treasure Hunt Game</title>
     <link rel="stylesheet" href="style.css">
-    <script defer src="app.js"></script>
+    <script defer src="js/app.js"></script>
 </head>
 <body>
 <header>
@@ -34,5 +34,19 @@
 <footer>
     <p>Team-J-App</p>
 </footer>
+
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+        const treasureHuntId = sessionStorage.getItem('selectedTreasureHuntId');
+        if (treasureHuntId) {
+            // Here you can use treasureHuntId to initialize the game
+            console.log('Selected Treasure Hunt ID:', treasureHuntId);
+            // For example, you can call a function to start a game with this ID
+            // startGame(treasureHuntId);
+        } else {
+            console.error('Treasure Hunt ID not found in session storage.');
+        }
+    });
+</script>
 </body>
 </html>
