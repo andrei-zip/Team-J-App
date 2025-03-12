@@ -1,14 +1,13 @@
-const API_URL = 'https://codecyprus.org/th/api/'; // Base URL for API requests
+const API_URL = 'https://codecyprus.org/th/api/'; // Base API URL
 
-let session = null; // Stores the session ID after starting the hunt
+let session = null; // Stores the session ID
 let score = 0; // Tracks the player's score
 let currentQuestion = null; // Stores the current question object
 let timer = 1800; // 30 minutes in seconds
 
 // Function to start the treasure hunt session
-
 async function startHunt(playerName, appName, treasureHuntId) {
-    console.log("Selected Treasure Hunt ID:", treasureHuntId); // Проверка ID
+    console.log("Selected Treasure Hunt ID:", treasureHuntId);
 
     if (!treasureHuntId) {
         console.error("Error: treasureHuntId is undefined!");
@@ -19,33 +18,34 @@ async function startHunt(playerName, appName, treasureHuntId) {
         const response = await fetch(`${API_URL}start?player=${encodeURIComponent(playerName)}&app=${encodeURIComponent(appName)}&treasure-hunt-id=${encodeURIComponent(treasureHuntId)}`);
         const data = await response.json();
 
-        if (data.status === 'OK') { // If the request is successful
-            session = data.session; // Save the session ID
-            fetchQuestion(); // Fetch the first question
+        if (data.status === 'OK') {
+            session = data.session;
+            fetchQuestion();
         } else {
-            console.error('Error starting hunt:', data.errorMessages); // Log error if hunt fails to start
+            console.error('Error starting hunt:', data.errorMessages);
         }
     } catch (error) {
-        console.error('Network error while starting hunt:', error); // Handle network errors
+        console.error('Network error while starting hunt:', error);
     }
 }
 
-// Function to fetch the current question from the API
+// Function to fetch the current question
 async function fetchQuestion() {
     if (!session) {
-        console.error('Session not initialized.'); // Ensure a session exists
+        console.error('Error: Session is not initialized.');
         return;
     }
     try {
-        const response = await fetch(`${API_URL}question?session=${session}`); //it should be wrapped
+        const response = await fetch(`${API_URL}question?session=${session}`);
         const data = await response.json();
+        console.log('Fetched question data:', data); // Checking Api-answer
 
         if (data.status === 'OK') {
-            currentQuestion = data.question; // Save the current question
-            displayQuestion(); // Display the question on the page
+            currentQuestion = data; // We took entire object
+            console.log('Current question:', currentQuestion); // Checking
+            displayQuestion();
         } else {
             console.error('Error fetching question:', data.errorMessages);
-            //Error handler needed (also for network error)
         }
     } catch (error) {
         console.error('Network error while fetching question:', error);
@@ -55,19 +55,25 @@ async function fetchQuestion() {
 // Function to display the current question in the UI
 function displayQuestion() {
     if (!currentQuestion) {
-        console.error('No question available.');
+        console.error('No available question.');
+        document.getElementById('question-text').innerText = 'Error loading question.';
         return;
     }
-    document.getElementById('question-title').innerText = `Question ${currentQuestion.currentQuestionIndex + 1}`; // Update question title
-    document.getElementById('question-text').innerHTML = currentQuestion.questionText; // Show question text
+    document.getElementById('question-title').innerText = `Question ${currentQuestion.currentQuestionIndex + 1}`;
+    document.getElementById('question-text').innerHTML = currentQuestion.questionText;
+
+    document.getElementById('answer-input').value = "";
+}
+//Its for updating our current score
+function updateScore(newScore) {
+    document.getElementById('score').innerText = `Your Score: ${newScore}`;
 }
 
-// Function to submit an answer to the API
+// Function to submit an answer
 async function submitAnswer() {
-    //It should be separatly
-    const answer = document.getElementById('answer-input').value.trim(); // Get the user's answer
+    const answer = document.getElementById('answer-input').value.trim();
     if (!answer) {
-        alert('Please enter an answer.'); // Ensure an answer is provided
+        alert('Please enter an answer.');
         return;
     }
     try {
@@ -75,14 +81,17 @@ async function submitAnswer() {
         const data = await response.json();
 
         if (data.status === 'OK') {
-            score = data.score; // Update the score
-            document.getElementById('score').innerText = score; // Display the new score
-            document.getElementById('feedback').innerText = data.correct ? 'Correct!' : 'Incorrect.'; // Show feedback
+            score = data.score;
+            document.getElementById('score').innerText = score;
+            document.getElementById('feedback').innerText = data.correct ? 'Correct! You are goody :)' : 'Incorrect. But who said that it could be easy? ;)';
 
-            if (data.completed) { // If the hunt is completed
+            updateScore(score);
+
+            if (data.completed) {
                 alert('Congratulations! You have completed the treasure hunt.');
             } else {
-                fetchQuestion(); // Load the next question
+                fetchQuestion();
+
             }
         } else {
             console.error('Error submitting answer:', data.errorMessages);
@@ -95,19 +104,17 @@ async function submitAnswer() {
 // Function to update the timer every second
 function updateTimer() {
     if (timer > 0) {
-        timer--; // Decrease the time
-        const minutes = Math.floor(timer / 60);
-        const seconds = timer % 60;
-        document.getElementById('timer').innerText = `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`; // Format time display
+        timer--;
+        document.getElementById('timer').innerText = new Date(timer * 1000).toISOString().substring(14, 19);
     } else {
-        alert('Time is up!'); // Notify the player when time runs out
+        alert('Time is up!');
     }
 }
 
-// Function to update the user's location (if needed)
+// Function to update the user's location
 async function updateLocation() {
     if (!navigator.geolocation) {
-        alert('Geolocation is not supported by your browser.'); // Check if geolocation is supported
+        alert('Geolocation is not supported by your browser.');
         return;
     }
     navigator.geolocation.getCurrentPosition(async (position) => {
@@ -117,8 +124,7 @@ async function updateLocation() {
             const data = await response.json();
 
             if (data.status === 'OK') {
-                //It wouldn't change, consider action location(as x an y)
-                document.getElementById('location-status').innerText = 'Location updated.'; // Notify user of update
+                document.getElementById('location-status').innerText = 'Location updated.';
             } else {
                 console.error('Error updating location:', data.errorMessages);
             }
@@ -132,17 +138,17 @@ async function updateLocation() {
 
 // Function to initialize the app when the page loads
 document.addEventListener("DOMContentLoaded", () => {
-    const playerName = prompt('Enter your name:'); // Ask for player's name
-    const appName = 'TreasureHuntApp'; // Define the app name
-    const treasureHuntId = sessionStorage.getItem('selectedTreasureHuntId'); // Retrieve the selected hunt ID from storage
+    const playerName = prompt('Enter your name:');
+    const appName = 'TreasureHuntApp';
+    const treasureHuntId = sessionStorage.getItem('selectedTreasureHuntId');
 
     if (treasureHuntId) {
-        startHunt(playerName, appName, treasureHuntId); // Start the hunt with the selected ID
-        setInterval(updateTimer, 1000); // Start the timer countdown
-        document.getElementById("submit-answer").addEventListener("click", submitAnswer); // Handle answer submission
-        document.getElementById("get-location").addEventListener("click", updateLocation); // Handle location updates
+        startHunt(playerName, appName, treasureHuntId);
+        setInterval(updateTimer, 1000);
+        document.getElementById("submit-answer").addEventListener("click", submitAnswer);
+        document.getElementById("get-location").addEventListener("click", updateLocation);
     } else {
         alert('No treasure hunt selected! Returning to selection page.');
-        window.location.href = 'start.html'; // Redirect if no hunt is selected
+        window.location.href = 'start.html';
     }
 });
