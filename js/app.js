@@ -6,7 +6,15 @@ let currentQuestion = null; // Stores the current question object
 let timer = 1800; // 30 minutes in seconds
 
 // Function to start the treasure hunt session
+
 async function startHunt(playerName, appName, treasureHuntId) {
+    console.log("Selected Treasure Hunt ID:", treasureHuntId); // Проверка ID
+
+    if (!treasureHuntId) {
+        console.error("Error: treasureHuntId is undefined!");
+        return;
+    }
+
     try {
         const response = await fetch(`${API_URL}start?player=${encodeURIComponent(playerName)}&app=${encodeURIComponent(appName)}&treasure-hunt-id=${encodeURIComponent(treasureHuntId)}`);
         const data = await response.json();
@@ -29,7 +37,7 @@ async function fetchQuestion() {
         return;
     }
     try {
-        const response = await fetch(`${API_URL}question?session=${session}`);
+        const response = await fetch(`${API_URL}question?session=${session}`); //it should be wrapped
         const data = await response.json();
 
         if (data.status === 'OK') {
@@ -37,6 +45,7 @@ async function fetchQuestion() {
             displayQuestion(); // Display the question on the page
         } else {
             console.error('Error fetching question:', data.errorMessages);
+            //Error handler needed (also for network error)
         }
     } catch (error) {
         console.error('Network error while fetching question:', error);
@@ -55,6 +64,7 @@ function displayQuestion() {
 
 // Function to submit an answer to the API
 async function submitAnswer() {
+    //It should be separatly
     const answer = document.getElementById('answer-input').value.trim(); // Get the user's answer
     if (!answer) {
         alert('Please enter an answer.'); // Ensure an answer is provided
@@ -67,7 +77,7 @@ async function submitAnswer() {
         if (data.status === 'OK') {
             score = data.score; // Update the score
             document.getElementById('score').innerText = score; // Display the new score
-            document.getElementById('feedback').innerText = data.correct ? 'Correct!' : 'Incorrect. Try again.'; // Show feedback
+            document.getElementById('feedback').innerText = data.correct ? 'Correct!' : 'Incorrect.'; // Show feedback
 
             if (data.completed) { // If the hunt is completed
                 alert('Congratulations! You have completed the treasure hunt.');
@@ -107,6 +117,7 @@ async function updateLocation() {
             const data = await response.json();
 
             if (data.status === 'OK') {
+                //It wouldn't change, consider action location(as x an y)
                 document.getElementById('location-status').innerText = 'Location updated.'; // Notify user of update
             } else {
                 console.error('Error updating location:', data.errorMessages);
