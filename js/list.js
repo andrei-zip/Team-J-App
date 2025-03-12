@@ -8,7 +8,7 @@ function letsHunt() {
             let listHTML = "<ul>";
 
             for (let i = 0; i < treasureHuntArray.length; i++) {
-                const huntId = treasureHuntArray[i].uuid; // Получаем UUID охоты
+                const huntId = treasureHuntArray[i].uuid; // Receiving UUID for Hunt
                 listHTML +=
                     `<li>
                         <b>${treasureHuntArray[i].name}</b><br>
@@ -22,7 +22,7 @@ function letsHunt() {
         .catch(error => console.error("Error fetching hunts:", error));
 }
 
-// Функция сохраняет UUID выбранной охоты и переходит на app.html
+// Saving UUID choosing of Hunt and passes into app.html
 function startFunction(treasureHuntId) {
     console.log("Saving selected Treasure Hunt ID:", treasureHuntId);
     sessionStorage.setItem('selectedTreasureHuntId', treasureHuntId);
