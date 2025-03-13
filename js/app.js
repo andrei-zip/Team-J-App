@@ -69,8 +69,10 @@ function displayQuestion() {
     document.getElementById('question-text').innerHTML = currentQuestion.questionText;
     //Clear the answer input filed for the new question
     document.getElementById('answer-input').value = "";
+
     if (currentQuestion.canBeSkipped){
         document.getElementById('skip-question').style.display = 'block';
+
     }
 }
 
