@@ -40,7 +40,9 @@ h1, h2, h3 {
 
 /* Styles for buttons */
 .button {
-    display: inline-block;
+    display: flex;
+    justify-content: center;
+    align-content: center;
     padding: 10px 20px;
     margin: 10px 0;
     background-color: var(--dark-cyan); /* Dark cyan button background */
