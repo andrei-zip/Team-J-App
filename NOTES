@@ -20,9 +20,30 @@ Landing Page Content:
 5.Purpose
 6.Start Button leading to the start treasure hunt
 7.Login button
-8.
+
+List Page Content:
+1.Logo
+2.Message to chose a treasure hunt
+3.Button to load treasure hunts
+4.Div to display treasure hunts
+5.
+
+Start Page Content:
+1.Logo
+2.Game container
+    - question title
+    - question text
+    - answer input
+    - submit button
+    - feedback
+    - score
+    - timer
+3.Button to update location
+4.Location status
+
+
 
 Meetings:
 19DEC24 : 
 20FEB24: Andrei and Roman discussed the theme and colors of the landing page and the TreasureHunt in general.
-
+13MAR24: Andrei and Roman had a programming meeting, for pair programming.
