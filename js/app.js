@@ -67,7 +67,7 @@ function displayQuestion() {
     //Clear the answer input filed for the new question
     document.getElementById('answer-input').value = "";
 }
-//Its for updating our current player's score
+//It's for updating our current player's score
 function updateScore(newScore) {
     document.getElementById('score').innerText = `Your Score: ${newScore}`;
 }
@@ -153,6 +153,6 @@ document.addEventListener("DOMContentLoaded", () => {
         document.getElementById("get-location").addEventListener("click", updateLocation);
     } else {
         alert('No treasure hunt selected! Returning to selection page.'); //We alert user if Game isn't selected yet
-        window.location.href = 'start.html'; //And redirect back to the app.html to select game
+        window.location.href = 'list.html'; //And redirect back to the start.html to select game
     }
 });

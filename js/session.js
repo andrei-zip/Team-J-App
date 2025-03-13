@@ -12,7 +12,7 @@ async function startSession(treasureHuntId) {
         if (data.status === "OK") {
             localStorage.setItem("sessionId", data.sessionId);
             console.log("Session successfully created:", data.sessionId);
-            window.location.href = "app.html";
+            window.location.href = "start.html";
         } else {
             console.error("Error of creating session:", data.errorMessages);
             alert("Error: " + data.errorMessages.join(", "));

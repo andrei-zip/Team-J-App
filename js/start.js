@@ -1,4 +1,4 @@
-alert("Enter your name");
+// alert("Enter your name");
 
 async function startHunt() {
 

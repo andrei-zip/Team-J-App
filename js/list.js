@@ -22,9 +22,9 @@ function letsHunt() {
         .catch(error => console.error("Error fetching hunts:", error));
 }
 
-// Function Saving UUID choosing of Hunt and passes into app.html
+// Function Saving UUID choosing of Hunt and passes into start.html
 function startFunction(treasureHuntId) {
     console.log("Saving selected Treasure Hunt ID:", treasureHuntId);
     sessionStorage.setItem('selectedTreasureHuntId', treasureHuntId);
-    window.location.href = 'app.html';
+    window.location.href = 'start.html';
 }
