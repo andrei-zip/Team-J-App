@@ -184,6 +184,6 @@ document.addEventListener("DOMContentLoaded", () => {
         document.getElementById("skip-question").addEventListener("click", skipQuestion);
     } else {
         alert('No treasure hunt selected! Returning to selection page.'); // Alert if no game was selected
-        window.location.href = 'list.html'; // Redirect back to selection page
+        window.location.href = 'list.html'; // Redirect back to list.html
     }
 });
