@@ -5,6 +5,8 @@ let score = 0; // Tracks the player's score
 let currentQuestion = null; // Stores the current question object
 let timer = 1800; // 30 minutes in seconds
 
+
+
 document.getElementById('skip-question').style.display = 'none';
 // Function to start the treasure hunt session
 async function startHunt(playerName, appName, treasureHuntId) {
@@ -30,6 +32,8 @@ async function startHunt(playerName, appName, treasureHuntId) {
         console.error('Network error while starting hunt:', error);
     }
 }
+
+
 
 // Function to fetch the current question
 async function fetchQuestion() {
@@ -89,10 +93,10 @@ async function submitAnswer() {
         const response = await fetch(`${API_URL}answer?session=${session}&answer=${encodeURIComponent(answer)}`);
         const data = await response.json();
 
-        score = data.score; //then we update the score
+
         if (data.status === 'OK') { //If the submission is successful
             if (data.correct) {
-                score += 10;
+                score += data.score; //then we update the score
 
             }
             else {

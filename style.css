@@ -15,6 +15,12 @@ body {
     margin: 0;
     padding: 0;
 }
+/* Moved contents to the center of the screen*/
+p {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+}
 
 /* Styles for headings */
 h1, h2, h3 {
