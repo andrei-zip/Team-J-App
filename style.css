@@ -12,6 +12,7 @@ body {
     background-color: var(--dark-purple); /* Sets the dark purple background */
     color: var(--mint-green); /* Sets the mint green text color */
     font-family: Arial, sans-serif; /* Main font */
+    font-size: 16px;
     margin: 0;
     padding: 0;
 }
@@ -20,6 +21,15 @@ p {
     display: flex;
     justify-content: center;
     align-content: center;
+}
+
+.centerMe {
+    display: flex;
+    justify-content: center;
+}
+
+.th-list {
+    padding-inline-start: 0;
 }
 
 /* Styles for headings */
@@ -40,7 +50,7 @@ h1, h2, h3 {
 
 /* Styles for buttons */
 .button {
-    display: flex;
+    display: block;
     justify-content: center;
     align-content: center;
     padding: 10px 20px;

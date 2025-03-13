@@ -5,16 +5,16 @@ function letsHunt() {
         .then(response => response.json())
         .then(json => {
             let treasureHuntArray = json.treasureHunts;
-            let listHTML = "<ul>";
+            let listHTML = "<ul class=\"th-list\">";
 
             for (let i = 0; i < treasureHuntArray.length; i++) {
                 const huntId = treasureHuntArray[i].uuid; // Receiving UUID for Hunt
                 listHTML +=
-                    `<li>
-                        <b>${treasureHuntArray[i].name}</b><br>
-                        ${treasureHuntArray[i].description}<br>
-                        <a class='button' onclick='startFunction("${huntId}")'>START</a>
-                    </li>`;
+                    `<div class="centerMe"><ul class="th-list">
+                        <div class="centerMe"><b>${treasureHuntArray[i].name}</b></div><br>
+                        <div class="centerMe">${treasureHuntArray[i].description}</div><br>
+                        <div class="centerMe"><a class='button' onclick='startFunction("${huntId}")'>START</a></div>
+                    </ul></div>`;
             }
             listHTML += "</ul>";
             document.getElementById("treasureHunts").innerHTML = listHTML;
