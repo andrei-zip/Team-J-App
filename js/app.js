@@ -34,7 +34,7 @@ async function startHunt(playerName, appName, treasureHuntId) {
 // Function to fetch the current question from the API
 async function fetchQuestion() {
     if (!session) {
-        alert('Session not found. Please restart the game.'); // Alert if session is missing
+        alert('Session not found. Please restart the hunt'); // Alert if session is missing
         return;
     }
     try {
@@ -49,7 +49,7 @@ async function fetchQuestion() {
         }
     } catch (error) {
         console.error('Network error while fetching question:', error);
-        alert('Network issue! Please try again.');
+        alert('Network issue! Please try again');
     }
 }
 
@@ -72,30 +72,26 @@ function displayQuestion() {
     }
 }
 
-// Function to submit an answer to the API
+// Function to submit an answer
 async function submitAnswer() {
-    const answer = document.getElementById('answer-input').value.trim(); // Get answer input
+    const answer = document.getElementById('answer-input').value.trim();
     if (!answer) {
-        alert('Please enter an answer.'); // Alert if no answer is entered
+        alert('Please enter an answer.');
         return;
     }
 
     try {
         const response = await fetch(`${API_URL}answer?session=${session}&answer=${encodeURIComponent(answer)}`);
-        const data = await response.json(); // Parse JSON response
+        const data = await response.json();
 
-        if (data.status === 'OK') {
-            score = data.score; // Update score
-            document.getElementById('score').innerText = score; // Display updated score
+        if (data.status === 'OK') { // If submission is successful
+            score += data.scoreAdjustment; // Taking score from API
+            updateScore(score); // updating the score
 
-            // Show feedback based on correctness
-            document.getElementById('feedback').innerText = data.correct ? 'Correct! Well done!' : 'Incorrect. Try again!';
-
-            if (data.completed) {
-                alert('Congratulations! You have completed the treasure hunt.'); // Notify player if hunt is completed
-            } else {
-                fetchQuestion(); // Fetch the next question
-            }
+            // Update UI with feedback
+            document.getElementById('feedback').innerText = data.correct ? 'Correct!' : 'Incorrect!';
+            updateLocation(); //Updating location for
+            fetchQuestion(); // Go to the next question
         } else {
             alert('Error submitting answer: ' + (data.errorMessages || 'Unknown error'));
         }
@@ -104,6 +100,8 @@ async function submitAnswer() {
         alert('Network issue! Please try again.');
     }
 }
+
+
 
 // Function to update and display the player's score
 function updateScore(newScore) {
@@ -117,9 +115,10 @@ async function skipQuestion() {
         const data = await response.json();
 
         if (data.status === 'OK') {
-            score = data.score; // Update score after skipping
+            score += data.scoreAdjustment; // Also taking from API the current score
             updateScore(score); // Update UI score display
-            document.getElementById('feedback').innerText = 'You skipped this question! -5 points!'; // Show skip feedback
+            document.getElementById('feedback').innerText = 'You skipped this question!'; // Show skip feedback
+            updateLocation(); //Also updating location after skip
             fetchQuestion(); // Fetch next question
         } else {
             alert('Error skipping question: ' + (data.errorMessages || 'Unknown error'));
@@ -181,7 +180,7 @@ document.addEventListener("DOMContentLoaded", () => {
         // Attach event listeners to UI buttons
         document.getElementById("submit-answer").addEventListener("click", submitAnswer);
         document.getElementById("get-location").addEventListener("click", updateLocation);
-        document.getElementById("skip-question").addEventListener("click", skipQuestion);
+
     } else {
         alert('No treasure hunt selected! Returning to selection page.'); // Alert if no game was selected
         window.location.href = 'list.html'; // Redirect back to list.html
