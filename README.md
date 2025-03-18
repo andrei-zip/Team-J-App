@@ -4,7 +4,9 @@ The team members are:
 <ul>
   <li>Moraru Andrei</li>
   <li>Roman Myslov</li>
-  <li>Viktor Minchenko</li>
+  <li>Denys Checha</li>
   <li>Styiliani Antoniou</li>
+  <li>Viktor Minchenko</li>
+  
 
 </ul>
