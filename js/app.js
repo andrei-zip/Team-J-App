@@ -46,6 +46,7 @@ async function fetchQuestion() {
             displayQuestion(); // Display question in UI
         } else {
             alert('Error fetching question: ' + (data.errorMessages || 'Unknown error'));
+            window.location.href = 'index.html'; // Go back to index.html if by some reasons treasureHunt is not available for now
         }
     } catch (error) {
         console.error('Network error while fetching question:', error);
@@ -86,12 +87,20 @@ async function submitAnswer() {
 
         if (data.status === 'OK') { // If submission is successful
             score += data.scoreAdjustment; // Taking score from API
+            updateLocation()
+            if (score < 0) { // In case if we have already 0 and answered the question incorrectly
+                score = 0; // Then the score will not be negative
+            }
             updateScore(score); // updating the score
 
             // Update UI with feedback
             document.getElementById('feedback').innerText = data.correct ? 'Correct!' : 'Incorrect!';
-            updateLocation(); //Updating location for
-            fetchQuestion(); // Go to the next question
+            if (data.completed) { // If the hunt is finished, go to leaderboard
+                alert('Congrats! You complete te TreasureHunt Game!');
+                showLeaderboard();
+            } else {
+                fetchQuestion(); // Go to the next question
+            }
         } else {
             alert('Error submitting answer: ' + (data.errorMessages || 'Unknown error'));
         }
@@ -101,7 +110,53 @@ async function submitAnswer() {
     }
 }
 
+async function showLeaderboard() {
+    console.log("Fetching leaderboard...");
 
+    try {
+        const response = await fetch(`${API_URL}leaderboard?sorted=true&limit=10`); // Request to API
+
+        const data = await response.json();
+        console.log("Leaderboard data:", data); // checking JSON in console
+
+        if (data.status === 'OK') {
+            const leaderboardContainer = document.getElementById('leaderboard');
+            leaderboardContainer.innerHTML = `<h2>Leaderboard - ${data.treasureHuntName}</h2><ul>`;
+
+            data.leaderboard.forEach((entry, index) => {
+                // Recreate time in mm:ss
+                let timeFormatted = entry.completionTime > 0 ?
+                    new Date(entry.completionTime).toISOString().substr(14, 5) : 'N/A';
+
+                leaderboardContainer.innerHTML += `
+                    <li><b>${index + 1}. ${entry.player}</b> - ${entry.score} points 
+                    (Time: ${timeFormatted})</li>`;
+            });
+
+            leaderboardContainer.innerHTML += '</ul>';
+            leaderboardContainer.innerHTML += `<button onclick="goBack()">Back to Home</button>`;
+
+            document.getElementById('game-container').style.display = 'none'; // hide TreasureHnunt
+            leaderboardContainer.style.display = 'block'; // showing leaderboard
+        } else {
+            alert('Error fetching leaderboard: ' + (data.errorMessages || 'Unknown error'));
+        }
+    } catch (error) {
+        console.error('Network error while fetching leaderboard:', error);
+        alert('Network issue! Please try again.');
+    }
+}
+
+// Function to returning into index.html
+function goBack() {
+    window.location.href = 'index.html';
+}
+
+
+// Function to return to index.html
+function goBack() {
+    window.location.href = 'index.html';
+}
 
 // Function to update and display the player's score
 function updateScore(newScore) {
@@ -118,7 +173,6 @@ async function skipQuestion() {
             score += data.scoreAdjustment; // Also taking from API the current score
             updateScore(score); // Update UI score display
             document.getElementById('feedback').innerText = 'You skipped this question!'; // Show skip feedback
-            updateLocation(); //Also updating location after skip
             fetchQuestion(); // Fetch next question
         } else {
             alert('Error skipping question: ' + (data.errorMessages || 'Unknown error'));
@@ -183,6 +237,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
     } else {
         alert('No treasure hunt selected! Returning to selection page.'); // Alert if no game was selected
-        window.location.href = 'list.html'; // Redirect back to list.html
+        window.location.href = 'index.html'; // Go back to list.html after completed treasureHunt
     }
 });
