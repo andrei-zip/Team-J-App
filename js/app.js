@@ -113,8 +113,14 @@ async function submitAnswer() {
 async function showLeaderboard() {
     console.log("Fetching leaderboard...");
 
+    let sessionId = session || sessionStorage.getItem('session');
+    let treasureHuntId = sessionStorage.getItem('selectedTreasureHuntId');
+
+    // Проверяем, какой параметр передавать
+    let queryParam = sessionId ? `session=${sessionId}` : `treasure-hunt-id=${treasureHuntId}`;
+
     try {
-        const response = await fetch(`${API_URL}leaderboard?sorted=true&limit=10`); // Request to API
+        const response = await fetch(`${API_URL}leaderboard?${queryParam}&sorted=true&limit=10`); // Request to API
 
         const data = await response.json();
         console.log("Leaderboard data:", data); // checking JSON in console
@@ -148,12 +154,6 @@ async function showLeaderboard() {
 }
 
 // Function to returning into index.html
-function goBack() {
-    window.location.href = 'index.html';
-}
-
-
-// Function to return to index.html
 function goBack() {
     window.location.href = 'index.html';
 }
