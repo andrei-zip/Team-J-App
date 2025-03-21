@@ -7,9 +7,19 @@
     --mint-green: #9ff7d6;
 }
 
+/* Background color */
+html,body {
+    height: 100%;
+    margin: 0;
+    background: linear-gradient(to bottom right, #322737 10%, #453f45 50%, #9ff7d6 100%);
+}
+/* Logo class to control size and so on*/
+.logo {
+    width: 30vw;
+    height: 30vw;
+}
 /* General styles for the body */
 body {
-    background-color: var(--dark-purple); /* Sets the dark purple background */
     color: var(--mint-green); /* Sets the mint green text color */
     font-family: Arial, sans-serif; /* Main font */
     font-size: 16px;
