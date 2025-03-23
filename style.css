@@ -129,12 +129,20 @@ input[type="submit"]:hover {
 }
 
 .social-icons img {
-    width: 10px; /* Adjust size to match design */
-    height: 10px;
+    width: 20px;
+    height: 20px;
     transition: transform 0.3s ease-in-out;
     border-radius: 50%; /* Makes icons round */
 }
 
+/* Specific size for Facebook and X icons */
+.social-icons .facebook-icon,
+.social-icons .x-icon {
+    width: 15px;
+    height: 15px;
+}
+
+/* Hover effect */
 .social-icons img:hover {
     transform: scale(1.2); /* Slight zoom effect */
 }
