@@ -116,33 +116,29 @@ input[type="submit"] {
 input[type="submit"]:hover {
     background-color: var(--light-green); /* Changes background on hover */
 }
-/* Social Media Section */
+/* Social Media Section*/
 .social-icons {
     display: flex;
-    justify-content: center;
-    gap: 15px; /* Space between icons */
+    justify-content: center; /* Center the icons horizontally */
+    gap: 15px; /* Space between the icons */
     margin-top: 20px;
 }
 
+/* Anchor tags inside the social-icons */
 .social-icons a {
     display: inline-block;
 }
 
+/* Style for the images (social media icons) */
 .social-icons img {
-    width: 5px;
-    height: 5px;
-    transition: transform 0.3s ease-in-out;
-    border-radius: 50%; /* Makes icons round */
+    width: 25px; /* Small size for icons */
+    height: 25px; /* Ensure height is the same as width for perfect round icons */
+    object-fit: contain; /* Ensure the image stays within the bounds without stretching */
+    transition: transform 0.3s ease-in-out; /* Smooth zoom effect */
+    border-radius: 50%; /* Make the icons round */
 }
 
-/* Specific size for Facebook and X icons */
-.social-icons .facebook-icon,
-.social-icons .x-icon {
-    width: 5px;
-    height: 5px;
-}
-
-/* Hover effect */
+/* Hover effect to slightly enlarge the icons when hovered */
 .social-icons img:hover {
-    transform: scale(0.5); /* Slight zoom effect */
+    transform: scale(1.1); /* Slight zoom effect */
 }
