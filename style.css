@@ -138,11 +138,11 @@ input[type="submit"]:hover {
 /* Specific size for Facebook and X icons */
 .social-icons .facebook-icon,
 .social-icons .x-icon {
-    width: 15px;
-    height: 15px;
+    width: 5px;
+    height: 5px;
 }
 
 /* Hover effect */
 .social-icons img:hover {
-    transform: scale(1.2); /* Slight zoom effect */
+    transform: scale(0.5); /* Slight zoom effect */
 }
