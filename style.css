@@ -116,3 +116,25 @@ input[type="submit"] {
 input[type="submit"]:hover {
     background-color: var(--light-green); /* Changes background on hover */
 }
+/* Social Media Section */
+.social-icons {
+    display: flex;
+    justify-content: center;
+    gap: 15px; /* Space between icons */
+    margin-top: 20px;
+}
+
+.social-icons a {
+    display: inline-block;
+}
+
+.social-icons img {
+    width: 40px; /* Adjust size to match design */
+    height: 40px;
+    transition: transform 0.3s ease-in-out;
+    border-radius: 50%; /* Makes icons round */
+}
+
+.social-icons img:hover {
+    transform: scale(1.2); /* Slight zoom effect */
+}
