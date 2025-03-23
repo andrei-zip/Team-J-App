@@ -129,8 +129,8 @@ input[type="submit"]:hover {
 }
 
 .social-icons img {
-    width: 40px; /* Adjust size to match design */
-    height: 40px;
+    width: 10px; /* Adjust size to match design */
+    height: 10px;
     transition: transform 0.3s ease-in-out;
     border-radius: 50%; /* Makes icons round */
 }
