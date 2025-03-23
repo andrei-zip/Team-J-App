@@ -11,88 +11,89 @@
 
 
 <body>
-    <header>
-        <div class="logo"></div>
-        <ul class="myNav">
-            <li class="navList"><a href="index.html">Home</a></li>
-            <li class="navList"><a href="list.html">List of Hunts</a></li>
-            <li class="navList"><a href="test.html" >Testing</a></li>
-        </ul>
-    </header>
-    <h1>Testing Report - Team-J-App</h1>
-    <br/>
-    <p>This page (test.html) will describe our teamwork and efforts approach for our Web Application</p>
+<header>
+    <div class="logo"></div>
+    <ul class="myNav">
+        <li class="navList"><a href="index.html">Home</a></li>
+        <li class="navList"><a href="list.html">List of Hunts</a></li>
+        <li class="navList"><a href="test.html" >Testing</a></li>
+    </ul>
+</header>
+<h1>Testing Report - Team-J-App</h1>
+<br/>
+<p>This page (test.html) will describe our teamwork and efforts approach for our Web Application</p>
 
-    <div class="test">
-        <h2>Testing Methods</h2>
-        <p>To ensure the correctness of our Web App, we applied a structured testing approach, which included the following:</p>
-        <ul>
-            <li>Unit Testing using console logs and API response validation</li>
-            <li>Manual testing for user interaction and UI/UX validation</li>
-            <li>User Acceptance Testing (UAT) with real users</li>
-        </ul>
-        <h3>Unit Testing</h3>
-        <p>During development, we implemented unit tests to verify the correctness of key functions:</p>
-        <ul>
-            <li>Ensuring <strong>fetchQuestion()</strong> retrieves and displays questions correctly</li>
-            <li>Validating <strong>submitAnswer()</strong> processes responses and updates scores properly</li>
-            <li>Testing <strong>updateLocation()</strong> to ensure it correctly interacts with the API</li>
-            <li>Confirming <strong>skipQuestion</strong> reduces score and loads the next question</li>
-        </ul>
-    </div>
-    <div class="test">
-        <h3>API testing</h3>
-        <p>We validated API responses using browser DevTools. The main tests included: </p>
-        <ul>
-            <li>Checking if the <strong>/start</strong> endpoint correctly initialises a session</li>
-            <li>Validating responses from the <strong>/question</strong> endpoint</li>
-            <li>Ensuring <strong>/answer</strong> updates the score and feedback messages correctly</li>
-            <li>Testing the <strong> /leaderboard</strong> API call to fetch and display results</li>
-            <li>And finally, being sure that The Game, overall, is playable</li>
-        </ul>
-    </div>
-    <div class="test">
-        <h2>User Acceptance Test (UAT)</h2>
-        <p>We asked real-users to testing our Treasure Hunt to validate the application's usability! The main feedback from users:</p>
-        <ul>
-            <li>The UI is intuitive and easy to navigate</li>
-            <li>The leaderboard correctly updates after completing the treasure hunt</li>
-            <li>Users suggested a confirmation prompt before skipping a question</li>
-        </ul>
-    </div>
-    <div class="test">
-        <h2>Issues Identified and Fixed</h2>
-        <p>Here are some key issues we found and fixed:</p>
-        <table border="1">
-            <tr>
-                <th>Issue</th>
-                <th>Status</th>
-                <th>Solution</th>
-            </tr>
-            <tr>
-                <td>Score went negative after multiple incorrect answers</td>
-            </tr>
-            <tr>
-                <td>Leaderboard did not display correctly</td>
-                <td>Fixed</td>
-                <td>Updated API call parameters</td>
-            </tr>
-            <tr>
-                <td>Location updates were not being registered properly</td>
-                <td>Fixed</td>
-                <td>Ensured correct API call structure</td>
-            </tr>
-        </table>
-    </div>
+<div class="test">
+    <h2>Testing Methods</h2>
+    <p>To ensure the correctness of our Web App, we applied a structured testing approach, which included the following:</p>
+    <ul>
+        <li>Unit Testing using console logs and API response validation</li>
+        <li>Manual testing for user interaction and UI/UX validation</li>
+        <li>User Acceptance Testing (UAT) with real users</li>
+    </ul>
+    <h3>Unit Testing</h3>
+    <p>During development, we implemented unit tests to verify the correctness of key functions:</p>
+    <ul>
+        <li>Ensuring <strong>fetchQuestion()</strong> retrieves and displays questions correctly</li>
+        <li>Validating <strong>submitAnswer()</strong> processes responses and updates scores properly</li>
+        <li>Testing <strong>updateLocation()</strong> to ensure it correctly interacts with the API</li>
+        <li>Confirming <strong>skipQuestion</strong> reduces score and loads the next question</li>
+    </ul>
+</div>
+<div class="test">
+    <h3>API testing</h3>
+    <p>We validated API responses using browser DevTools. The main tests included: </p>
+    <ul>
+        <li>Checking if the <strong>/start</strong> endpoint correctly initialises a session</li>
+        <li>Validating responses from the <strong>/question</strong> endpoint</li>
+        <li>Ensuring <strong>/answer</strong> updates the score and feedback messages correctly</li>
+        <li>Testing the <strong> /leaderboard</strong> API call to fetch and display results</li>
+        <li>And finally, being sure that The Game, overall, is playable</li>
+    </ul>
+</div>
+<div class="test">
+    <h2>User Acceptance Test (UAT)</h2>
+    <p>We asked real-users to testing our Treasure Hunt to validate the application's usability! The main feedback from users:</p>
+    <ul>
+        <li>The UI is intuitive and easy to navigate</li>
+        <li>The leaderboard correctly updates after completing the treasure hunt</li>
+        <li>Users suggested a confirmation prompt before skipping a question</li>
+    </ul>
+</div>
+<div class="test">
+    <h2>Issues Identified and Fixed</h2>
+    <p>Here are some key issues we found and fixed:</p>
+    <table border="1">
+        <tr>
+            <th>Issue</th>
+            <th>Status</th>
+            <th>Solution</th>
+        </tr>
+        <tr>
+            <td>Score went negative after multiple incorrect answers</td>
+        </tr>
+        <tr>
+            <td>Leaderboard did not display correctly</td>
+            <td>Fixed</td>
+            <td>Updated API call parameters</td>
+        </tr>
+        <tr>
+            <td>Location updates were not being registered properly</td>
+            <td>Fixed</td>
+            <td>Ensured correct API call structure</td>
+        </tr>
+    </table>
+</div>
 
-    <div class="test">
+<div class="test">
 
-        <h2>Future Improvements</h2>
-        <ul>
-            <li>Enhance UI/UX based on additional user feedback</li>
-            <li>Optimise API requests for better performance</li>
-        </ul>
-    </div>
+    <h2>Future Improvements</h2>
+    <ul>
+        <li>Enhance UI/UX based on additional user feedback</li>
+        <li>Optimise API requests for better performance</li>
+
+    </ul>
+</div>
 
 </body>
 
