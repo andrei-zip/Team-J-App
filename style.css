@@ -132,9 +132,9 @@ input[type="submit"]:hover {
 /* Style for the images (social media icons) */
 .social-icons img {
     width: 25px; /* Small size for icons */
-    height: 25px; /* Ensure height is the same as width for perfect round icons */
-    object-fit: contain; /* Ensure the image stays within the bounds without stretching */
-    transition: transform 0.3s ease-in-out; /* Smooth zoom effect */
+    height: 25px;
+    object-fit: contain;
+    transition: transform 0.3s ease-in-out;
     border-radius: 50%; /* Make the icons round */
 }
 
