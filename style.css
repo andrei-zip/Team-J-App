@@ -117,28 +117,3 @@ input[type="submit"]:hover {
     background-color: var(--light-green); /* Changes background on hover */
 }
 /* Social Media Section*/
-.social-icons {
-    display: flex;
-    justify-content: center; /* Center the icons horizontally */
-    gap: 10px; /* Space between the icons */
-    margin-top: 20px;
-}
-
-/* Anchor tags inside the social-icons */
-.social-icons a {
-    display: inline-block;
-}
-
-/* Style for the images (social media icons) */
-.social-icons img {
-    width: 25px; /* Small size for icons */
-    height: 25px;
-    object-fit: contain;
-    transition: transform 0.3s ease-in-out;
-    border-radius: 50%; /* Make the icons round */
-}
-
-/* Hover effect to slightly enlarge the icons when hovered */
-.social-icons img:hover {
-    transform: scale(1.1); /* Slight zoom effect */
-}
