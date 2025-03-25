@@ -1,9 +1,0 @@
-table {
-    width: 100%;
-    border: 1px solid blue
-}
-
-th, td {
-    border-bottom: 1px solid gray;
-    text-align: left;
-}
