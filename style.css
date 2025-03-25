@@ -238,7 +238,6 @@ input[type="submit"]:hover {
 }
 #customAlert button {
     padding: 10px 22px;
-    font-size: 1rem;
     border-radius: 999px;
     width: 100%;
     max-width: 200px;
