@@ -12,13 +12,20 @@
 
 <body>
 <header>
-    <div class="logo"></div>
-    <ul class="myNav">
-        <li class="navList"><a href="index.html">Home</a></li>
-        <li class="navList"><a href="list.html">List of Hunts</a></li>
-        <li class="navList"><a href="test.html" >Testing</a></li>
+    <nav>
+    <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="list.html">List</a></li>
+        <li><a href="test.html">Testing</a></li>
     </ul>
+</nav>
+
+    <br/>
 </header>
+<div class="centerMe">
+    <img class="logo" src="resources/Team_J_logo.png" alt="Team J logo">   <!-- Logo Generated with Artificial Intelligence ( ChatGPT ) -->
+</div>
+
 <h1>Testing Report - Team-J-App</h1>
 <br/>
 <p>This page (test.html) will describe our teamwork and efforts approach for our Web Application</p>
@@ -59,6 +66,97 @@
         <li>The leaderboard correctly updates after completing the treasure hunt</li>
         <li>Users suggested a confirmation prompt before skipping a question</li>
     </ul>
+
+    <section>
+        <h2>User Acceptance Testing (UAT)</h2>
+        <table border="1">
+            <tr>
+                <th>Test Case</th>
+                <th>Steps</th>
+                <th>Expected Result</th>
+                <th>Actual Result</th>
+                <th>Status</th>
+            </tr>
+            <tr>
+                <td>Page Load</td>
+                <td>Open index.html</td>
+                <td>Page loads correctly</td>
+                <td id="test-load-result">Pending</td>
+                <td id="test-load-status">Success</td>
+            </tr>
+            <tr>
+                <td>List</td>
+                <td>When we tapping lists button</td>
+                <td>Shows treasureHunts</td>
+                <td id="test-app-list">Pending</td>
+                <td id="test-app-list-status">Success</td>
+            </tr>
+            <tr>
+                <td>Start Hunt</td>
+                <td>Choose a hunt and click "Start"</td>
+                <td>Redirects to app.html</td>
+                <td id="test-start-result">Pending</td>
+                <td id="test-start-status">Success</td>
+            </tr>
+            <tr>
+                <td>Question</td>
+                <td>After filling in our username</td>
+                <td>Expect to receive a question from API</td>
+                <td id="test-fetch-question">Pending</td>
+                <td id="test-fetch-question-status">Success</td>
+            </tr>
+            <tr>
+                <td>Answer</td>
+                <td>After filling in our username</td>
+                <td>Expect to receive a question from API</td>
+                <td id="test-fetch-answer">Pending</td>
+                <td id="test-fetch-answer-status">Success</td>
+            </tr>
+            <tr>
+                <td>location</td>
+                <td>Press the button in questions (requires location)</td>
+                <td>Location updates correctly and showing coordinates</td>
+                <td id="test-location-result">Pending</td>
+                <td id="test-location-status">Working</td>
+            </tr>
+            <tr>
+                <td>Skip</td>
+                <td>If user don't know answer of some questions</td>
+                <td>After press skip question should be skipped and take 5 points away</td>
+                <td id="test-fetch-skip">Pending</td>
+                <td id="test-fetch-skip-status">Success</td>
+            </tr>
+            <tr>
+                <td>Score</td>
+                <td>It works if user answering correclty.</td>
+                <td>Increasing and decreasing score when user answering the question</td>
+                <td id="test-fetch-score">Pending</td>
+                <td id="test-fetch-score-status">Success</td>
+            </tr>
+            <tr>
+                <td>Leaderboard</td>
+                <td>Finish hunt and check leaderboard</td>
+                <td>Leaderboard displays correctly</td>
+                <td id="test-leaderboard-result">Pending</td>
+                <td id="test-leaderboard-status">Success</td>
+            </tr>
+        </table>
+        <button onclick="runTests()">Run Tests</button>
+    </section>
+
+    <section>
+        <h2>API Testing</h2>
+        <button onclick="testAPI()">Test API Endpoints</button>
+        <p id="api-test-result">Results will appear here...</p>
+    </section>
+
+</div>
+
+    <section>
+        <h2>Overview</h2>
+        <p>This page presents the testing efforts, including User Acceptance Testing (UAT) and API validation.</p>
+    </section>
+
 </div>
 <div class="test">
     <h2>Issues Identified and Fixed</h2>
@@ -94,7 +192,7 @@
 
     </ul>
 </div>
-
+<script src="js/test.js"></script>
 </body>
 
 </html>
