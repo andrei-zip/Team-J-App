@@ -68,7 +68,6 @@
     </ul>
 
     <section>
-        <h2>User Acceptance Testing (UAT)</h2>
         <table border="1">
             <tr>
                 <th>Test Case</th>
@@ -82,63 +81,63 @@
                 <td>Open index.html</td>
                 <td>Page loads correctly</td>
                 <td id="test-load-result">Pending</td>
-                <td id="test-load-status">Success</td>
+                <td id="test-load-status">-</td>
             </tr>
             <tr>
                 <td>List</td>
                 <td>When we tapping lists button</td>
                 <td>Shows treasureHunts</td>
                 <td id="test-app-list">Pending</td>
-                <td id="test-app-list-status">Success</td>
+                <td id="test-app-list-status">-</td>
             </tr>
             <tr>
                 <td>Start Hunt</td>
                 <td>Choose a hunt and click "Start"</td>
                 <td>Redirects to app.html</td>
                 <td id="test-start-result">Pending</td>
-                <td id="test-start-status">Success</td>
+                <td id="test-start-status">-</td>
             </tr>
             <tr>
                 <td>Question</td>
                 <td>After filling in our username</td>
                 <td>Expect to receive a question from API</td>
                 <td id="test-fetch-question">Pending</td>
-                <td id="test-fetch-question-status">Success</td>
+                <td id="test-fetch-question-status">-</td>
             </tr>
             <tr>
                 <td>Answer</td>
                 <td>After filling in our username</td>
                 <td>Expect to receive a question from API</td>
                 <td id="test-fetch-answer">Pending</td>
-                <td id="test-fetch-answer-status">Success</td>
+                <td id="test-fetch-answer-status">-</td>
             </tr>
             <tr>
                 <td>location</td>
                 <td>Press the button in questions (requires location)</td>
                 <td>Location updates correctly and showing coordinates</td>
                 <td id="test-location-result">Pending</td>
-                <td id="test-location-status">Working</td>
+                <td id="test-location-status">-</td>
             </tr>
             <tr>
                 <td>Skip</td>
                 <td>If user don't know answer of some questions</td>
                 <td>After press skip question should be skipped and take 5 points away</td>
                 <td id="test-fetch-skip">Pending</td>
-                <td id="test-fetch-skip-status">Success</td>
+                <td id="test-fetch-skip-status">-</td>
             </tr>
             <tr>
                 <td>Score</td>
                 <td>It works if user answering correclty.</td>
                 <td>Increasing and decreasing score when user answering the question</td>
                 <td id="test-fetch-score">Pending</td>
-                <td id="test-fetch-score-status">Success</td>
+                <td id="test-fetch-score-status">-</td>
             </tr>
             <tr>
                 <td>Leaderboard</td>
                 <td>Finish hunt and check leaderboard</td>
                 <td>Leaderboard displays correctly</td>
                 <td id="test-leaderboard-result">Pending</td>
-                <td id="test-leaderboard-status">Success</td>
+                <td id="test-leaderboard-status">-</td>
             </tr>
         </table>
         <button class="button" onclick="runTests()">Run Tests</button>
@@ -150,7 +149,45 @@
         <p id="api-test-result">Results will appear here...</p>
     </section>
 
+    <section>
+        <h2>Usability Assessment (Nielsen's Heuristics)</h2>
+        <p>We tested the application using "10 Nielsen heuristics". Here are the results:</p>
+        <table border="1">
+            <tr>
+                <th>Heuristics</th>
+                <th>How it is implemented</th>
+                <th>What to improve</th>
+            </tr>
+            <tr>
+                <td>Visibility of the system status</td>
+                <td>The timer shows the remaining time, and the response status is displayed.</td>
+                <td>Add a progress bar to complete the game.</td>
+            </tr>
+            <tr>
+                <td>User's control and freedom</td>
+                <td>The "Skip" button allows you to skip the questions.</td>
+                <td>Add a confirmation before skipping the question.</td>
+            </tr>
+            <tr>
+                <td>Compliance with the system and the real world</td>
+                <td>The questions are formulated in simple language.</td>
+                <td>Add icons and visual cues.</td>
+            </tr>
+            <tr>
+                <td>Error prevention</td>
+                <td>Geolocation shows an error if not enabled.</td>
+                <td>Add a message with instructions on how to enable geolocation.</td>
+            </tr>
+            <tr>
+                <td>Help and documentation</td>
+                <td>There is a "Game Rules" button in the menu.</td>
+                <td>Add an FAQ section with answers to frequently asked questions.</td>
+            </tr>
+        </table>
+    </section>
 </div>
+
+
 
     <section>
         <h2>Overview</h2>
@@ -169,6 +206,8 @@
         </tr>
         <tr>
             <td>Score went negative after multiple incorrect answers</td>
+            <td>Fixed</td>
+            <td>When user already have 0 points then it cannot be a negative number</td>
         </tr>
         <tr>
             <td>Leaderboard did not display correctly</td>

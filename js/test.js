@@ -5,31 +5,31 @@ function runTests() {
 
     // Simulating test results (update these based on real checks)
     document.getElementById("test-load-result").innerText = "Passed";
-    document.getElementById("test-load-status").innerText = "Succeeded";
+    document.getElementById("test-load-status").innerText = "Success";
 
     document.getElementById("test-app-list").innerText = "Passed";
-    document.getElementById("test-app-list-status").innerText = "Succeeded";
+    document.getElementById("test-app-list-status").innerText = "Success";
 
     document.getElementById("test-start-result").innerText = "Passed";
-    document.getElementById("test-start-status").innerText = "Succeeded";
+    document.getElementById("test-start-status").innerText = "Success";
 
     document.getElementById("test-fetch-question").innerText = "Passed";
-    document.getElementById("test-fetch-question-status").innerText = "Succeeded";
+    document.getElementById("test-fetch-question-status").innerText = "Success";
 
     document.getElementById("test-fetch-answer").innerText = "Passed";
-    document.getElementById("test-fetch-answer-status").innerText = "Succeeded";
+    document.getElementById("test-fetch-answer-status").innerText = "Success";
 
     document.getElementById("test-location-result").innerText = "Passed";
-    document.getElementById("test-location-status").innerText = "Succeeded";
+    document.getElementById("test-location-status").innerText = "Success";
 
     document.getElementById("test-fetch-skip").innerText = "Passed";
-    document.getElementById("test-fetch-skip-status").innerText = "Succeeded";
+    document.getElementById("test-fetch-skip-status").innerText = "Success";
 
     document.getElementById("test-fetch-score").innerText = "Passed";
-    document.getElementById("test-fetch-score-status").innerText = "Succeeded";
+    document.getElementById("test-fetch-score-status").innerText = "Success";
 
     document.getElementById("test-leaderboard-result").innerText = "Passed";
-    document.getElementById("test-leaderboard-status").innerText = "Succeeded";
+    document.getElementById("test-leaderboard-status").innerText = "Success";
 
     console.log("All tests completed successfully!");
 }
