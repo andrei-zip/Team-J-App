@@ -215,14 +215,14 @@ input[type="submit"]:hover {
 /***-------------- END ---------------***/
 
 /* Style for alerts */
-#alertOverlay {
+#alertOverlay {     /* overlay of the alert */
     display: none;
     position: fixed;
     top: 0; right: 0; bottom: 0; left: 0;
     background-color: rgba(0, 0, 0, 0.5);
     z-index: 999;
 }
-#customAlert {
+#customAlert {  /*  custom alert */
     display: none;
     position: fixed;
     top: 50%;
@@ -236,7 +236,7 @@ input[type="submit"]:hover {
     z-index: 1000;
     box-sizing: border-box;
 }
-#customAlert button {
+#customAlert button {   /* custom alert button*/
     padding: 10px 22px;
     border-radius: 999px;
     width: 100%;
@@ -247,11 +247,11 @@ input[type="submit"]:hover {
     background-color: var(--dark-cyan);
     display: block;
 }
-#customAlert button:hover {
+#customAlert button:hover { /* custom alert button hover*/
     background-color: var(--light-green);
 }
 
-@media (max-width: 480px) {
+@media (max-width: 480px) { /* media query to help responsiveness on smaller screens*/
     #customAlert p {
         font-size: 14rem;
     }
