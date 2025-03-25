@@ -8,21 +8,40 @@
   <title>Let's Hunt!</title>
 </head>
 <body>
-<header>
-  <h1>Treasure Hunts!</h1>
-  <p>Select one of the treasure hunts!</p>
-</header>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="list.html">List</a></li>
+                <li><a href="test.html">Testing</a></li>
+            </ul>
+        </nav>
+      <div class="centerMe">
+        <img class="logo" src="resources/Team_J_logo.png" alt="Team J logo">   <!-- Logo Generated with Artificial Intelligence ( ChatGPT ) -->
+      </div>
 
-<main>
-  <div class="centerMe"><button class="button" id="btnLoadHunts">Load Hunts</button>
-  </div>
+    </header>
 
-  <div id="treasureHunts"></div>
-</main>
+    <main>
+        <h1>Treasure Hunts!</h1>
+        <p>Select one of the treasure hunts!</p>
+        <div class="centerMe"><button class="button" id="btnLoadHunts">Load Hunts</button>
+        </div>
 
-<footer>
-  <p>Team-J-App</p>
-</footer>
+        <div id="treasureHunts"></div>
+    </main>
+
+    <footer>
+        <p>Follow us for more updates on our Treasure Hunt!</p>
+        <div class="social-icons"></div>
+        <a href="https://www.facebook.com/TeamJApp" target="_blank">
+            <img class="social-icons" src="resources/facebook-icon.png" alt="Facebook">
+        </a>
+        <a href="https://x.com/Team_J_App" target="_blank">
+            <img class="social-icons" src="resources/twitter-icon.png" alt="Twitter">
+        </a>
+        <p>&copy; 2025 Team-J-App</p>
+    </footer>
 
 <script src="js/session.js"></script>
 <script src="js/list.js"></script>

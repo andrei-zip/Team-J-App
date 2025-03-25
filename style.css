@@ -7,14 +7,65 @@
     --mint-green: #9ff7d6;
 }
 
+/* Background color */
+html,body {
+    height: 100%;
+    margin: 0;
+    background: linear-gradient(to bottom right, #322737 10%, #453f45 50%, #9ff7d6 100%);
+}
+/* Logo class to control size and so on*/
+.logo {
+    width: 30vw;
+    height: 30vw;
+}
 /* General styles for the body */
 body {
-    background-color: var(--dark-purple); /* Sets the dark purple background */
     color: var(--mint-green); /* Sets the mint green text color */
     font-family: Arial, sans-serif; /* Main font */
     font-size: 16px;
     margin: 0;
     padding: 0;
+}
+
+header {
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
+    text-align: center;
+    font-size: 25px;
+}
+
+nav ul{
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+nav ul li{
+    display: inline;
+    margin: 0 15px;
+}
+nav ul li a{
+    color: var(--light-green);
+    text-decoration: none;
+    font-weight: bold;
+}
+
+/*Footer part*/
+
+footer{
+    background-color: var(--dark-purple);
+    color: var(--mint-green);
+    text-align: center;
+    padding: 15px 0;
+    margin-top: 20px;
+}
+footer a img{
+    margin: 5px;
+    transition: 0.3s;
+}
+footer a img:hover{
+    transform: scale(1.2);
 }
 /* Moved contents to the center of the screen*/
 p {
@@ -106,3 +157,4 @@ input[type="submit"] {
 input[type="submit"]:hover {
     background-color: var(--light-green); /* Changes background on hover */
 }
+/* Social Media Section*/

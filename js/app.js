@@ -4,6 +4,7 @@ let session = null; // Stores the session ID
 let score = 0; // Keeps track of the player's score
 let currentQuestion = null; // Holds the current question object
 let timer = 1800; // Timer set to 30 minutes (1800 seconds)
+let lastLocationUpdate = 0;
 
 document.getElementById('skip-question').style.display = 'none'; // Hide skip button initially
 
@@ -81,13 +82,13 @@ async function submitAnswer() {
         return;
     }
 
+
     try {
         const response = await fetch(`${API_URL}answer?session=${session}&answer=${encodeURIComponent(answer)}`);
         const data = await response.json();
 
         if (data.status === 'OK') { // If submission is successful
             score += data.scoreAdjustment; // Taking score from API
-            updateLocation()
             if (score < 0) { // In case if we have already 0 and answered the question incorrectly
                 score = 0; // Then the score will not be negative
             }
@@ -97,7 +98,7 @@ async function submitAnswer() {
             document.getElementById('feedback').innerText = data.correct ? 'Correct!' : 'Incorrect!';
             if (data.completed) { // If the hunt is finished, go to leaderboard
                 alert('Congrats! You complete te TreasureHunt Game!');
-                showLeaderboard();
+                Leaderboard();
             } else {
                 fetchQuestion(); // Go to the next question
             }
@@ -110,7 +111,7 @@ async function submitAnswer() {
     }
 }
 
-async function showLeaderboard() {
+async function Leaderboard() {
     console.log("Fetching leaderboard...");
 
     let sessionId = session || sessionStorage.getItem('session');
@@ -200,15 +201,26 @@ async function updateLocation() {
         return;
     }
 
+    //Checking for updating location
+    const now = Date.now();
+    if (now - lastLocationUpdate < 30000) {
+        alert('Update your location every 30 seconds');
+        return;
+    }
+
     navigator.geolocation.getCurrentPosition(async (position) => {
         const { latitude, longitude } = position.coords; // Extract latitude and longitude
+
+        if (currentQuestion.requiresLocation){
+            submitAnswer();
+        }
 
         try {
             const response = await fetch(`${API_URL}location?session=${session}&latitude=${latitude}&longitude=${longitude}`);
             const data = await response.json();
 
             if (data.status === 'OK') {
-                document.getElementById('location-status').innerText = 'Location updated.'; // Update location status in UI
+                document.getElementById('location-status').innerText = `Location updated: ${latitude}, ${longitude}`; // Update location status in UI which showing coords
             } else {
                 alert('Error updating location: ' + (data.errorMessages || 'Unknown error'));
             }

@@ -8,48 +8,51 @@
     <script defer src="js/app.js"></script>
 </head>
 <body>
-<header>
-    <h1>Treasure Hunt</h1>
-    <p>Find locations, answer questions, and earn points!</p>
-</header>
+    <header>
+        <div class="centerMe">
+        <img class="logo" src="resources/Team_J_logo.png" alt="Team J logo">   <!-- Logo Generated with Artificial Intelligence ( ChatGPT ) -->
+        </div>
+        <h1>Treasure Hunt</h1>
+        <p>Find locations, answer questions, and earn points!</p>
+    </header>
 
-<main>
-    <div id="leaderboard" style="display: none;"></div>
-    <div id="game-container">
-        <h2 id="question-title">Loading question...</h2>
-        <p id="question-text"></p>
+    <main>
+        <div id="leaderboard" style="display: none;"></div>
+        <div id="game-container">
+            <h2 id="question-title">Loading question...</h2>
+            <p id="question-text"></p>
 
-        <input type="text" id="answer-input" placeholder="Enter your answer...">
-        <button id="submit-answer">Submit</button>
-        <button id="skip-question" onclick="skipQuestion()">Skip | -5 points</button>
+            <input type="text" id="answer-input" placeholder="Enter your answer...">
+            <div><button class="button" id="submit-answer">Submit</button></div>
+            <div><button class="button" id="skip-question" onclick="skipQuestion()">Skip | -5 points</button></div>
 
-        <p id="feedback"></p>
+            <p id="feedback"></p>
 
-        <p><strong>Your Score:</strong> <span id="score">0</span></p>
-        <p><strong>Time Left:</strong> <span id="timer">30:00</span></p>
-    </div>
+            <p><strong>Your Score:</strong> <span id="score">0</span></p>
+            <p><strong>Time Left:</strong> <span id="timer">30:00</span></p>
+        </div>
 
-    <div><button class="button" id="get-location">Update Location</button></div>
-    <p id="location-status">Location not found</p>
-</main>
+        <div><button class="button" id="get-location">Update Location</button></div>
+        <p id="location-status">Location not found</p>
+    </main>
 
-<footer>
-    <p>Team-J-App</p>
-</footer>
+    <footer>
+        <p>Team-J-App</p>
+    </footer>
 
-<script>
-    document.addEventListener("DOMContentLoaded", () => {
-        const treasureHuntId = sessionStorage.getItem('selectedTreasureHuntId');
-        if (treasureHuntId) {
-            // Here you can use treasureHuntId to initialize the game
-            console.log('Selected Treasure Hunt ID:', treasureHuntId);
-            // For example, you can call a function to start a game with this ID
-            // startGame(treasureHuntId);
-        } else {
-            console.error('Treasure Hunt ID not found in session storage.');
-        }
-    });
-</script>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const treasureHuntId = sessionStorage.getItem('selectedTreasureHuntId');
+            if (treasureHuntId) {
+                // Here you can use treasureHuntId to initialize the game
+                console.log('Selected Treasure Hunt ID:', treasureHuntId);
+                // For example, you can call a function to start a game with this ID
+                // startGame(treasureHuntId);
+            } else {
+                console.error('Treasure Hunt ID not found in session storage.');
+            }
+        });
+    </script>
 
 </body>
 </html>
