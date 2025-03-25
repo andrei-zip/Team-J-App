@@ -156,6 +156,8 @@ async function Leaderboard() {
         alert('Network issue! Please try again.');
     }
 }
+// Call the function to fetch and display the leaderboard when the page is loaded
+document.addEventListener('DOMContentLoaded', Leaderboard);
 
 // Function to returning into index.html
 function goBack() {
