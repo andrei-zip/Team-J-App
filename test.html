@@ -68,7 +68,7 @@
     </ul>
 
     <section>
-        <h2>User Acceptance Testing (UAT)</h2>
+        <h2>User Acceptance Testing (UAT)</h2> <!-- This part contains the test API call with table of all functions which contains in the Game -->
         <table border="1">
             <tr>
                 <th>Test Case</th>
@@ -150,6 +150,43 @@
         <p id="api-test-result">Results will appear here...</p>
     </section>
 
+    <section>
+        <h2>Usability Assessment (Nielsen's Heuristics)</h2> <!-- It is using of performance for users -->
+        <p>We tested the application using 10 Nielsen heuristics. Here are the results:</p>
+        <table border="1">
+            <tr>
+                <th>Heuristics</th>
+                <th>How it is implemented</th>
+                <th>What to improve</th>
+            </tr>
+            <tr>
+                <td>Visibility of the system status</td>
+                <td>The timer shows the remaining time, and the response status is displayed.</td>
+                <td>Add a progress bar to complete the game.</td>
+            </tr>
+            <tr>
+                <td>User's control and freedom</td>
+                <td>The "Skip" button allows you to skip the questions.</td>
+                <td>Add a confirmation before skipping the question.</td>
+            </tr>
+            <tr>
+                <td>Compliance with the system and the real world</td>
+                <td>The questions are formulated in simple language.</td>
+                <td>Add icons and visual cues.</td>
+            </tr>
+            <tr>
+                <td>Error prevention</td>
+                <td>Geolocation shows an error if not enabled.</td>
+                <td>Add a message with instructions on how to enable geolocation.</td>
+            </tr>
+            <tr>
+                <td>Help and documentation</td>
+                <td>There is a "Game Rules" button in the menu.</td>
+                <td>Add an FAQ section with answers to frequently asked questions.</td>
+            </tr>
+        </table>
+    </section>
+
 </div>
 
     <section>
@@ -169,6 +206,8 @@
         </tr>
         <tr>
             <td>Score went negative after multiple incorrect answers</td>
+            <td>Fixed</td>
+            <td>Make a condition if score already have 0 points and it cannot come to negative number</td>
         </tr>
         <tr>
             <td>Leaderboard did not display correctly</td>
