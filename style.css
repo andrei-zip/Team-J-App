@@ -8,15 +8,31 @@
 }
 
 /* Background color */
-html,body {
+html {
     height: 100%;
     margin: 0;
     background: linear-gradient(to bottom right, #322737 10%, #453f45 50%, #9ff7d6 100%);
 }
+/* Wrapper div to control elements easier*/
+.wrapper{
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+/* keeps content properly displayed e.g. Footer sticks to the bottom of the screen */
+main{
+    flex:1;
+}
+
 /* Logo class to control size and so on*/
-.logo {
+.logo{
     width: 30vw;
     height: 30vw;
+}
+/* Uclan logo*/
+.uclanlogo {
+    width: 25vw;
+    height: 10vw;
 }
 /* General styles for the body */
 body {
