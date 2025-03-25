@@ -101,7 +101,7 @@ async function submitAnswer() {
             document.getElementById('feedback').innerText = data.correct ? 'Correct!' : 'Incorrect!';
             if (data.completed) { // If the hunt is finished, go to leaderboard
                 alert('Congrats! You complete te TreasureHunt Game!');
-                Leaderboard();
+                window.location.href = "leaderboard.html"; // Redirect to leaderboard.html
             } else {
                 fetchQuestion(); // Go to the next question
             }
