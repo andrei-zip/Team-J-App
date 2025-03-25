@@ -7,13 +7,13 @@
     --mint-green: #9ff7d6;
 }
 
-/* Background color */
+/*** Background color ***/
 html {
     height: 100%;
     margin: 0;
     background: linear-gradient(to bottom right, #322737 10%, #453f45 50%, #9ff7d6 100%);
 }
-/* Wrapper div to control elements easier*/
+/*** Wrapper div to control elements easier ***/
 .wrapper{
     display: flex;
     flex-direction: column;
@@ -23,8 +23,10 @@ html {
 main{
     flex:1;
 }
+/***-------------- END ---------------***/
 
-/* Logo class to control size and so on*/
+/*** Logo and images ***/
+/* Logo size ctrl*/
 .logo{
     width: 30vw;
     height: 30vw;
@@ -34,7 +36,21 @@ main{
     width: 25vw;
     height: 10vw;
 }
-/* General styles for the body */
+/***-------------- END ---------------***/
+
+/*** Styles for main ***/
+/*** Styles for the main container ***/
+.container {
+    width: 80%;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: var(--medium-purple); /* Medium purple background for the container */
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); /* Shadow effect for depth */
+}
+/***-------------- END ---------------***/
+
+/*** General styles for the body ***/
 body {
     color: var(--mint-green); /* Sets the mint green text color */
     font-family: Arial, sans-serif; /* Main font */
@@ -67,8 +83,21 @@ nav ul li a{
     font-weight: bold;
 }
 
-/*Footer part*/
+/* Moved contents to the center of the screen*/
+p {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+}
 
+.centerMe {
+    display: flex;
+    justify-content: center;
+}
+
+/***-------------- END ---------------***/
+
+/*** Styles for footer ***/
 footer{
     background-color: var(--dark-purple);
     color: var(--mint-green);
@@ -83,41 +112,50 @@ footer a img{
 footer a img:hover{
     transform: scale(1.2);
 }
-/* Moved contents to the center of the screen*/
-p {
-    display: flex;
-    justify-content: center;
-    align-content: center;
-}
 
-.centerMe {
-    display: flex;
-    justify-content: center;
-}
 
 .th-list {
     padding-inline-start: 0;
 }
+/***-------------- END ---------------***/
 
-/* Styles for headings */
+/*** Styles for headings ***/
 h1, h2, h3 {
     color: var(--light-green); /* Light green color for headings */
     text-align: center;
 }
 
-/* Styles for the main container */
-.container {
-    width: 80%;
-    margin: 0 auto;
-    padding: 20px;
-    background-color: var(--medium-purple); /* Medium purple background for the container */
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); /* Shadow effect for depth */
-}
+/***-------------- END ---------------***/
 
-/* Styles for buttons */
-.button {
+
+
+/*** Styles for start.html ***/
+#answer-input {
+    width: 80%;
+    max-width: 200px;
+    padding: 10px;
+    margin: 0 auto;
     display: block;
+    box-sizing: border-box;
+}
+/*  styles for buttons */
+.btn-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2vw;
+    margin-top: 3vw;
+}
+/***-------------- END ---------------***/
+
+
+/*** Styles for list.html ***/
+
+/***-------------- END ---------------***/
+
+/*** Styles for buttons,links,forms and input ***/
+.button {
+    display: flex;
     justify-content: center;
     align-content: center;
     padding: 10px 20px;
@@ -173,4 +211,6 @@ input[type="submit"] {
 input[type="submit"]:hover {
     background-color: var(--light-green); /* Changes background on hover */
 }
-/* Social Media Section*/
+
+/***-------------- END ---------------***/
+
