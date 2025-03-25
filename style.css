@@ -11,7 +11,7 @@
 html {
     height: 100%;
     margin: 0;
-    background: linear-gradient(to bottom right, #322737 10%, #453f45 50%, #9ff7d6 100%);
+    background: linear-gradient(to bottom right, var(--dark-purple) 10%, var(--medium-purple) 50%, var(--mint-green) 100%);
 }
 /*** Wrapper div to control elements easier ***/
 .wrapper{
@@ -214,3 +214,39 @@ input[type="submit"]:hover {
 
 /***-------------- END ---------------***/
 
+/* Style for alerts */
+#alertOverlay {
+    display: none;
+    position: fixed;
+    top: 0; right: 0; bottom: 0; left: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 999;
+}
+#customAlert {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: linear-gradient(to bottom right, var(--dark-purple) 10%, var(--medium-purple) 50%, var(--mint-green) 100%);
+    padding: 10px 30px;
+    text-align: center;
+    border-radius: 10px;
+    z-index: 1000;
+}
+#customAlert p {
+    color: var(--mint-green);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#customAlert button {
+    padding: 1px 2px;
+    border: none;
+    background-color: var(--dark-cyan);
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 2vw;
+}
+#customAlert button:hover {
+    background-color: var(--light-green);
+}
