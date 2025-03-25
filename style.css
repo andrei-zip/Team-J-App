@@ -223,30 +223,40 @@ input[type="submit"]:hover {
     z-index: 999;
 }
 #customAlert {
+    display: none;
     position: fixed;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     background: linear-gradient(to bottom right, var(--dark-purple) 10%, var(--medium-purple) 50%, var(--mint-green) 100%);
-    padding: 10px 30px;
-    text-align: center;
+    padding: 20px;
+    width: 90%;
     border-radius: 10px;
+    text-align: center;
     z-index: 1000;
-}
-#customAlert p {
-    color: var(--mint-green);
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    box-sizing: border-box;
 }
 #customAlert button {
-    padding: 1px 2px;
-    border: none;
-    background-color: var(--dark-cyan);
-    border-radius: 6px;
+    padding: 10px 22px;
+    font-size: 1rem;
+    border-radius: 999px;
+    width: 100%;
+    max-width: 200px;
     cursor: pointer;
     font-size: 2vw;
+    margin: auto;
+    background-color: var(--dark-cyan);
+    display: block;
 }
 #customAlert button:hover {
     background-color: var(--light-green);
+}
+
+@media (max-width: 480px) {
+    #customAlert p {
+        font-size: 14rem;
+    }
+    #customAlert {
+        padding: 15px;
+    }
 }
