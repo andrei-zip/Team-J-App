@@ -7,6 +7,4 @@ The team members are:
   <li>Denys Checha</li>
   <li>Styiliani Antoniou</li>
   <li>Viktor Minchenko</li>
-  
-
 </ul>
