@@ -44,7 +44,7 @@ async function testAPI() {
         { name: "Submit Answer", url: `${API_URL}answer?session=test-session&answer=test-answer` },
         { name: "Skip Question", url: `${API_URL}skip?session=test-session` },
         { name: "Update Location", url: `${API_URL}location?session=test-session&latitude=34.000&longitude=33.000` },
-        { name: "Leaderboard", url: `${API_URL}leaderboard?treasure-hunt-id=sample-id` },
+        { name: "Leaderboard", url: `${API_URL}leaderboard?session=test-session` },
     ];
 
     let results = "";
