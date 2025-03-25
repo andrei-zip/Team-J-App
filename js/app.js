@@ -82,11 +82,6 @@ async function submitAnswer() {
         return;
     }
 
-    if (currentQuestion && currentQuestion.requiresLocation && document.getElementById('location-status').innerText !== 'Location updated.') {
-        alert('You need to update your location before answering!');
-        return;
-    }
-
 
     try {
         const response = await fetch(`${API_URL}answer?session=${session}&answer=${encodeURIComponent(answer)}`);
@@ -225,7 +220,7 @@ async function updateLocation() {
             const data = await response.json();
 
             if (data.status === 'OK') {
-                document.getElementById('location-status').innerText = 'Location updated.'; // Update location status in UI
+                document.getElementById('location-status').innerText = `Location updated: ${latitude}, ${longitude}`; // Update location status in UI which showing coords
             } else {
                 alert('Error updating location: ' + (data.errorMessages || 'Unknown error'));
             }
