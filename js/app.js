@@ -81,8 +81,11 @@ async function submitAnswer() {
         alert('Please enter an answer.');
         return;
     }
-
-
+// Confirm submission
+    const isConfirmed = confirm('Are you sure you want to submit this answer?');
+    if (!isConfirmed) {
+        return; // If not confirmed, exit the function
+    }
     try {
         const response = await fetch(`${API_URL}answer?session=${session}&answer=${encodeURIComponent(answer)}`);
         const data = await response.json();
@@ -143,7 +146,7 @@ async function Leaderboard() {
             leaderboardContainer.innerHTML += '</ul>';
             leaderboardContainer.innerHTML += `<button onclick="goBack()">Back to Home</button>`;
 
-            document.getElementById('game-container').style.display = 'none'; // hide TreasureHnunt
+            document.getElementById('game-container').style.display = 'none'; // hide TreasureHunt
             leaderboardContainer.style.display = 'block'; // showing leaderboard
         } else {
             alert('Error fetching leaderboard: ' + (data.errorMessages || 'Unknown error'));

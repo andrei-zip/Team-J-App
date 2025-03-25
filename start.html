@@ -8,6 +8,7 @@
     <script defer src="js/app.js"></script>
 </head>
 <body>
+    <div class="wrapper">
     <header>
         <div class="centerMe">
         <img class="logo" src="resources/Team_J_logo.png" alt="Team J logo">   <!-- Logo Generated with Artificial Intelligence ( ChatGPT ) -->
@@ -23,23 +24,25 @@
             <p id="question-text"></p>
 
             <input type="text" id="answer-input" placeholder="Enter your answer...">
-            <div><button class="button" id="submit-answer">Submit</button></div>
-            <div><button class="button" id="skip-question" onclick="skipQuestion()">Skip | -5 points</button></div>
-
+            <div class="btn-container">
+            <button class="button" id="submit-answer">Submit</button>
+            <button class="button" id="skip-question" onclick="skipQuestion()">Skip | -5 points</button>
+            </div>
             <p id="feedback"></p>
 
             <p><strong>Your Score:</strong> <span id="score">0</span></p>
             <p><strong>Time Left:</strong> <span id="timer">30:00</span></p>
         </div>
 
-        <div><button class="button" id="get-location">Update Location</button></div>
+        <div class="btn-container"><button class="button" id="get-location">Update Location</button></div>
         <p id="location-status">Location not found</p>
     </main>
 
     <footer>
         <p>Team-J-App</p>
+        <img class="uclanlogo" src="resources/uclan-logo.png" alt="uclanlogo">
     </footer>
-
+    </div>
     <script>
         document.addEventListener("DOMContentLoaded", () => {
             const treasureHuntId = sessionStorage.getItem('selectedTreasureHuntId');
