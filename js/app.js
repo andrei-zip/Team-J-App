@@ -24,7 +24,8 @@ async function startHunt(playerName, appName, treasureHuntId) {
             session = data.session; // Store session ID
             fetchQuestion(); // Fetch the first question
         } else {
-            alert('Error starting hunt: ' + (data.errorMessages || 'Unknown error')); // Show error message
+            // alert('Error starting hunt: ' + (data.errorMessages || 'Unknown error')); // Show error message
+            showCustomAlert('Error starting hunt: ' + (data.errorMessages || 'Unknown error'));
         }
     } catch (error) {
         console.error('Network error while starting hunt:', error); // Log network error
@@ -253,7 +254,8 @@ document.addEventListener("DOMContentLoaded", () => {
         document.getElementById("get-location").addEventListener("click", updateLocation);
 
     } else {
-        alert('No treasure hunt selected! Returning to selection page.'); // Alert if no game was selected
+        // alert('No treasure hunt selected! Returning to selection page.'); // Alert if no game was selected
+        showCustomAlert('No treasure hunt selected! Returning to selection page.');
         window.location.href = 'index.html'; // Go back to list.html after completed treasureHunt
     }
 });

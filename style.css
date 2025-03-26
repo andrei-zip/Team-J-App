@@ -230,7 +230,7 @@ input[type="submit"]:hover {
     transform: translate(-50%, -50%);
     background: linear-gradient(to bottom right, var(--dark-purple) 10%, var(--medium-purple) 50%, var(--mint-green) 100%);
     padding: 20px;
-    width: 90%;
+    width: 40%;
     border-radius: 10px;
     text-align: center;
     z-index: 1000;
