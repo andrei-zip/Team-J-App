@@ -231,6 +231,8 @@ input[type="submit"]:hover {
     background: linear-gradient(to bottom right, var(--dark-purple) 10%, var(--medium-purple) 50%, var(--mint-green) 100%);
     padding: 20px;
     width: 40%;
+    max-width: 400px;
+    min-width: 250px;
     border-radius: 10px;
     text-align: center;
     z-index: 1000;
@@ -239,6 +241,7 @@ input[type="submit"]:hover {
 #customAlert button {   /* custom alert button*/
     padding: 10px 22px;
     border-radius: 999px;
+    border: none;
     width: 100%;
     max-width: 200px;
     cursor: pointer;
@@ -253,7 +256,7 @@ input[type="submit"]:hover {
 
 @media (max-width: 480px) { /* media query to help responsiveness on smaller screens*/
     #customAlert p {
-        font-size: 14rem;
+        font-size: 4vw;
     }
     #customAlert {
         padding: 15px;

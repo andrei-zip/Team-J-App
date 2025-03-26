@@ -6,6 +6,7 @@
   <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"> <!-- I'm not sure that it could be useful, but probably it might be useful for additional styling for project-->
   <title>Leaderboard</title>
+  <script src="js/app.js"></script>
 </head>
 
 <body>
@@ -16,5 +17,12 @@
       <h1>Treasure Hunt</h1>
       <p>Find locations, answer questions, and earn points!</p>
     </header>
+
+    <div id="alertOverlay"></div>
+    <div id="customAlert">
+      <p id="alertMessage"> This is a custom Alert!</p>
+      <button onclick="hideCustomAlert()">OK</button>
+    </div>
+
 </body>
 </html>

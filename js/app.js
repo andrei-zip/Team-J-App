@@ -6,12 +6,31 @@ let currentQuestion = null; // Holds the current question object
 let timer = 1800; // Timer set to 30 minutes (1800 seconds)
 let lastLocationUpdate = 0;
 
+/** Custom alerts javascript **/
+/* displays the custom alert*/
+function showCustomAlert(message) {
+    document.getElementById('alertMessage').innerHTML = message;
+    document.getElementById('alertOverlay').style.display = 'block';
+    document.getElementById('customAlert').style.display = 'block';
+}
+/* hides custom alert*/
+function hideCustomAlert() {
+    document.getElementById('alertOverlay').style.display = "none";
+    document.getElementById('customAlert').style.display = 'none';
+}
+/* makes custom alert invisible originally*/
+window.onload = () => {
+    document.getElementById('alertOverlay').style.display = 'none';
+    document.getElementById('customAlert').style.display = 'none';
+};
+
 document.getElementById('skip-question').style.display = 'none'; // Hide skip button initially
 
 // Function to start the treasure hunt session
 async function startHunt(playerName, appName, treasureHuntId) {
     if (!treasureHuntId) {
-        alert("Error: No Treasure Hunt ID selected!"); // Alert if no hunt is selected
+        // alert("Error: No Treasure Hunt ID selected!"); // Alert if no hunt is selected
+        showCustomAlert("Error: No Treasure Hunt ID selected!");
         return;
     }
 
@@ -29,14 +48,16 @@ async function startHunt(playerName, appName, treasureHuntId) {
         }
     } catch (error) {
         console.error('Network error while starting hunt:', error); // Log network error
-        alert('Network error! Please try again.');
+        // alert('Network error! Please try again.');
+        showCustomAlert("Network error! Please try again.");
     }
 }
 
 // Function to fetch the current question from the API
 async function fetchQuestion() {
     if (!session) {
-        alert('Session not found. Please restart the hunt'); // Alert if session is missing
+        // alert('Session not found. Please restart the hunt'); // Alert if session is missing
+        showCustomAlert('Session not found. Please restart the hunt');
         return;
     }
     try {
@@ -47,19 +68,22 @@ async function fetchQuestion() {
             currentQuestion = data; // Store current question object
             displayQuestion(); // Display question in UI
         } else {
-            alert('Error fetching question: ' + (data.errorMessages || 'Unknown error'));
+            // alert('Error fetching question: ' + (data.errorMessages || 'Unknown error'));
+            showCustomAlert('Error fetching question: ' + (data.errorMessages || 'Unknown error'));
             window.location.href = 'index.html'; // Go back to index.html if by some reasons treasureHunt is not available for now
         }
     } catch (error) {
         console.error('Network error while fetching question:', error);
-        alert('Network issue! Please try again');
+        // alert('Network issue! Please try again');
+        showCustomAlert('Network issue! Please try again');
     }
 }
 
 // Function to display the current question in the UI
 function displayQuestion() {
     if (!currentQuestion) {
-        alert('Error loading question.'); // Alert if question data is missing
+        // alert('Error loading question.'); // Alert if question data is missing
+        showCustomAlert('Error loading question.');
         return;
     }
 
@@ -79,7 +103,8 @@ function displayQuestion() {
 async function submitAnswer() {
     const answer = document.getElementById('answer-input').value.trim();
     if (!answer) {
-        alert('Please enter an answer.');
+        // alert('Please enter an answer.');
+        showCustomAlert('Please enter answer.');
         return;
     }
 // Confirm submission
@@ -101,17 +126,21 @@ async function submitAnswer() {
             // Update UI with feedback
             document.getElementById('feedback').innerText = data.correct ? 'Correct!' : 'Incorrect!';
             if (data.completed) { // If the hunt is finished, go to leaderboard
-                alert('Congrats! You complete te TreasureHunt Game!');
+                // alert('Congrats! You complete te TreasureHunt Game!');
+                showCustomAlert('Congrats! You complete te TreasureHunt Game!');
                 window.location.href = "leaderboard.html"; // Redirect to leaderboard.html
             } else {
                 fetchQuestion(); // Go to the next question
             }
         } else {
-            alert('Error submitting answer: ' + (data.errorMessages || 'Unknown error'));
+            // alert('Error submitting answer: ' + (data.errorMessages || 'Unknown error'));
+            showCustomAlert('Error submitting answer: ' + (data.errorMessages || 'Unknown error'));
         }
     } catch (error) {
         console.error('Network error while submitting answer:', error);
-        alert('Network issue! Please try again.');
+        // alert('Network issue! Please try again.');
+        showCustomAlert('Network issue! Please try again.');
+
     }
 }
 
@@ -150,11 +179,13 @@ async function Leaderboard() {
             document.getElementById('game-container').style.display = 'none'; // hide TreasureHunt
             leaderboardContainer.style.display = 'block'; // showing leaderboard
         } else {
-            alert('Error fetching leaderboard: ' + (data.errorMessages || 'Unknown error'));
+            // alert('Error fetching leaderboard: ' + (data.errorMessages || 'Unknown error'));
+            showCustomAlert('Error fetching leaderboard: ' + (data.errorMessages || 'Unknown error'));
         }
     } catch (error) {
         console.error('Network error while fetching leaderboard:', error);
         alert('Network issue! Please try again.');
+        showCustomAlert('Network issue! Please try again.');
     }
 }
 // Call the function to fetch and display the leaderboard when the page is loaded
@@ -182,11 +213,14 @@ async function skipQuestion() {
             document.getElementById('feedback').innerText = 'You skipped this question!'; // Show skip feedback
             fetchQuestion(); // Fetch next question
         } else {
-            alert('Error skipping question: ' + (data.errorMessages || 'Unknown error'));
+            // alert('Error skipping question: ' + (data.errorMessages || 'Unknown error'));
+            showCustomAlert('Error skipping question: ' + (data.errorMessages || 'Unknown error'));
+
         }
     } catch (error) {
         console.error('Network error while skipping question:', error);
-        alert('Network issue! Please try again.');
+        // alert('Network issue! Please try again.');
+        showCustomAlert('Network issue! Please try again.');
     }
 }
 
@@ -196,21 +230,24 @@ function updateTimer() {
         timer--; // Reduce timer by 1 second
         document.getElementById('timer').innerText = new Date(timer * 1000).toISOString().substring(14, 19); // Display time in MM:SS format
     } else {
-        alert('Time is up!'); // Notify player when time runs out
+        // alert('Time is up!'); // Notify player when time runs out
+        showCustomAlert('Time is up!'); // Notify player when time runs out
     }
 }
 
 // Function to update player's location using Geolocation API
 async function updateLocation() {
     if (!navigator.geolocation) {
-        alert('Geolocation is not supported by your browser.'); // Alert if geolocation is not available
+        // alert('Geolocation is not supported by your browser.'); // Alert if geolocation is not available
+        showCustomAlert('Geolocation is not supported by your browser.');
         return;
     }
 
     //Checking for updating location
     const now = Date.now();
     if (now - lastLocationUpdate < 30000) {
-        alert('Update your location every 30 seconds');
+        // alert('Update your location every 30 seconds');
+        showCustomAlert('Update your location every 30 seconds');
         return;
     }
 
@@ -228,14 +265,17 @@ async function updateLocation() {
             if (data.status === 'OK') {
                 document.getElementById('location-status').innerText = `Location updated: ${latitude}, ${longitude}`; // Update location status in UI which showing coords
             } else {
-                alert('Error updating location: ' + (data.errorMessages || 'Unknown error'));
+                // alert('Error updating location: ' + (data.errorMessages || 'Unknown error'));
+                showCustomAlert('Error updating location: ' + (data.errorMessages || 'Unknown error'));
             }
         } catch (error) {
             console.error('Network error while updating location:', error);
-            alert('Network issue! Please try again.');
+            // alert('Network issue! Please try again.');
+            showCustomAlert('Network issue! Please try again.');
         }
     }, (error) => {
-        alert('Error getting location: ' + error.message); // Alert on geolocation error
+        // alert('Error getting location: ' + error.message); // Alert on geolocation error
+        showCustomAlert('Error getting location: ' + error.message); // Alert on geolocation error
     });
 }
 
