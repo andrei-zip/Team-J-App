@@ -71,6 +71,14 @@
         <li>Notetaker: Roman</li>
         <li>Disscused: Roman meet with Dennys to help with instagram account and also create a video presentaion about our "TreasureHunt" project</li>
 </ul> <p></p>
+
+<li>26MAR25</li>
+      <ul>
+        <li>Location: Discord</li>
+        <li>Attendees: Andrei, Roman and Styilianni</li>
+        <li>Notetaker: Andrei</li>
+        <li>Disscused: The team discussed the state of the page, Andrei updated the app with custom Alerts, we confirm the submission time, Styilianni created the instagram page and implemented it togeder with Andrei</li>
+</ul> <p></p>
 </ol>
 
 </strong>
