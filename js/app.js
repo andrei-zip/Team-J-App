@@ -19,18 +19,19 @@ function hideCustomAlert() {
     document.getElementById('customAlert').style.display = 'none';
 }
 /* makes custom alert invisible originally*/
-window.onload = () => {
-    document.getElementById('alertOverlay').style.display = 'none';
-    document.getElementById('customAlert').style.display = 'none';
-};
+//window.onload = () => {
+
+//};
+document.getElementById('alertOverlay').style.display = 'none';
+document.getElementById('customAlert').style.display = 'none';
+
 
 document.getElementById('skip-question').style.display = 'none'; // Hide skip button initially
 
 // Function to start the treasure hunt session
 async function startHunt(playerName, appName, treasureHuntId) {
     if (!treasureHuntId) {
-        // alert("Error: No Treasure Hunt ID selected!"); // Alert if no hunt is selected
-        showCustomAlert("Error: No Treasure Hunt ID selected!");
+        showCustomAlert("Error: No Treasure Hunt ID selected!"); // Alert if no hunt is selected
         return;
     }
 
@@ -43,21 +44,18 @@ async function startHunt(playerName, appName, treasureHuntId) {
             session = data.session; // Store session ID
             fetchQuestion(); // Fetch the first question
         } else {
-            // alert('Error starting hunt: ' + (data.errorMessages || 'Unknown error')); // Show error message
-            showCustomAlert('Error starting hunts: ' + (data.errorMessages || 'Unknown error'));
+            showCustomAlert('Error starting hunt: ' + (data.errorMessages || 'Unknown error')); // Show error message
         }
     } catch (error) {
         console.error('Network error while starting hunt:', error); // Log network error
-        // alert('Network error! Please try again.');
-        showCustomAlert("Network error! Please try again.");
+        showCustomAlert('Network error! Please try again.');
     }
 }
 
 // Function to fetch the current question from the API
 async function fetchQuestion() {
     if (!session) {
-        // alert('Session not found. Please restart the hunt'); // Alert if session is missing
-        showCustomAlert('Session not found. Please restart the hunt');
+        showCustomAlert('Session not found. Please restart the hunt'); // Alert if session is missing
         return;
     }
     try {
@@ -68,22 +66,19 @@ async function fetchQuestion() {
             currentQuestion = data; // Store current question object
             displayQuestion(); // Display question in UI
         } else {
-            // alert('Error fetching question: ' + (data.errorMessages || 'Unknown error'));
             showCustomAlert('Error fetching question: ' + (data.errorMessages || 'Unknown error'));
             window.location.href = 'index.html'; // Go back to index.html if by some reasons treasureHunt is not available for now
         }
     } catch (error) {
         console.error('Network error while fetching question:', error);
-        // alert('Network issue! Please try again');
-        showCustomAlert('Network issue! Please try again');
+        alert('Network issue! Please try again');
     }
 }
 
 // Function to display the current question in the UI
 function displayQuestion() {
     if (!currentQuestion) {
-        // alert('Error loading question.'); // Alert if question data is missing
-        showCustomAlert('Error loading question.');
+        alert('Error loading question.'); // Alert if question data is missing
         return;
     }
 
@@ -103,15 +98,11 @@ function displayQuestion() {
 async function submitAnswer() {
     const answer = document.getElementById('answer-input').value.trim();
     if (!answer) {
-        // alert('Please enter an answer.');
-        showCustomAlert('Please enter answer.');
+        alert('Please enter an answer.');
         return;
     }
-// Confirm submission
-    const isConfirmed = confirm('Are you sure you want to submit this answer?');
-    if (!isConfirmed) {
-        return; // If not confirmed, exit the function
-    }
+
+
     try {
         const response = await fetch(`${API_URL}answer?session=${session}&answer=${encodeURIComponent(answer)}`);
         const data = await response.json();
@@ -126,21 +117,17 @@ async function submitAnswer() {
             // Update UI with feedback
             document.getElementById('feedback').innerText = data.correct ? 'Correct!' : 'Incorrect!';
             if (data.completed) { // If the hunt is finished, go to leaderboard
-                // alert('Congrats! You complete te TreasureHunt Game!');
-                showCustomAlert('Congrats! You complete te TreasureHunt Game!');
-                window.location.href = "leaderboard.html"; // Redirect to leaderboard.html
+                alert('Congrats! You complete te TreasureHunt Game!');
+                Leaderboard();
             } else {
                 fetchQuestion(); // Go to the next question
             }
         } else {
-            // alert('Error submitting answer: ' + (data.errorMessages || 'Unknown error'));
-            showCustomAlert('Error submitting answer: ' + (data.errorMessages || 'Unknown error'));
+            alert('Error submitting answer: ' + (data.errorMessages || 'Unknown error'));
         }
     } catch (error) {
         console.error('Network error while submitting answer:', error);
-        // alert('Network issue! Please try again.');
-        showCustomAlert('Network issue! Please try again.');
-
+        alert('Network issue! Please try again.');
     }
 }
 
@@ -176,20 +163,16 @@ async function Leaderboard() {
             leaderboardContainer.innerHTML += '</ul>';
             leaderboardContainer.innerHTML += `<button onclick="goBack()">Back to Home</button>`;
 
-            document.getElementById('game-container').style.display = 'none'; // hide TreasureHunt
+            document.getElementById('game-container').style.display = 'none'; // hide TreasureHnunt
             leaderboardContainer.style.display = 'block'; // showing leaderboard
         } else {
-            // alert('Error fetching leaderboard: ' + (data.errorMessages || 'Unknown error'));
-            showCustomAlert('Error fetching leaderboard: ' + (data.errorMessages || 'Unknown error'));
+            alert('Error fetching leaderboard: ' + (data.errorMessages || 'Unknown error'));
         }
     } catch (error) {
         console.error('Network error while fetching leaderboard:', error);
         alert('Network issue! Please try again.');
-        showCustomAlert('Network issue! Please try again.');
     }
 }
-// Call the function to fetch and display the leaderboard when the page is loaded
-document.addEventListener('DOMContentLoaded', Leaderboard);
 
 // Function to returning into index.html
 function goBack() {
@@ -213,14 +196,11 @@ async function skipQuestion() {
             document.getElementById('feedback').innerText = 'You skipped this question!'; // Show skip feedback
             fetchQuestion(); // Fetch next question
         } else {
-            // alert('Error skipping question: ' + (data.errorMessages || 'Unknown error'));
-            showCustomAlert('Error skipping question: ' + (data.errorMessages || 'Unknown error'));
-
+            alert('Error skipping question: ' + (data.errorMessages || 'Unknown error'));
         }
     } catch (error) {
         console.error('Network error while skipping question:', error);
-        // alert('Network issue! Please try again.');
-        showCustomAlert('Network issue! Please try again.');
+        alert('Network issue! Please try again.');
     }
 }
 
@@ -230,24 +210,21 @@ function updateTimer() {
         timer--; // Reduce timer by 1 second
         document.getElementById('timer').innerText = new Date(timer * 1000).toISOString().substring(14, 19); // Display time in MM:SS format
     } else {
-        // alert('Time is up!'); // Notify player when time runs out
-        showCustomAlert('Time is up!'); // Notify player when time runs out
+        alert('Time is up!'); // Notify player when time runs out
     }
 }
 
 // Function to update player's location using Geolocation API
 async function updateLocation() {
     if (!navigator.geolocation) {
-        // alert('Geolocation is not supported by your browser.'); // Alert if geolocation is not available
-        showCustomAlert('Geolocation is not supported by your browser.');
+        alert('Geolocation is not supported by your browser.'); // Alert if geolocation is not available
         return;
     }
 
     //Checking for updating location
     const now = Date.now();
     if (now - lastLocationUpdate < 30000) {
-        // alert('Update your location every 30 seconds');
-        showCustomAlert('Update your location every 30 seconds');
+        alert('Update your location every 30 seconds');
         return;
     }
 
@@ -265,17 +242,14 @@ async function updateLocation() {
             if (data.status === 'OK') {
                 document.getElementById('location-status').innerText = `Location updated: ${latitude}, ${longitude}`; // Update location status in UI which showing coords
             } else {
-                // alert('Error updating location: ' + (data.errorMessages || 'Unknown error'));
-                showCustomAlert('Error updating location: ' + (data.errorMessages || 'Unknown error'));
+                alert('Error updating location: ' + (data.errorMessages || 'Unknown error'));
             }
         } catch (error) {
             console.error('Network error while updating location:', error);
-            // alert('Network issue! Please try again.');
-            showCustomAlert('Network issue! Please try again.');
+            alert('Network issue! Please try again.');
         }
     }, (error) => {
-        // alert('Error getting location: ' + error.message); // Alert on geolocation error
-        showCustomAlert('Error getting location: ' + error.message); // Alert on geolocation error
+        alert('Error getting location: ' + error.message); // Alert on geolocation error
     });
 }
 
@@ -294,8 +268,7 @@ document.addEventListener("DOMContentLoaded", () => {
         document.getElementById("get-location").addEventListener("click", updateLocation);
 
     } else {
-        // alert('No treasure hunt selected! Returning to selection page.'); // Alert if no game was selected
-        showCustomAlert('No treasure hunt selected! Returning to selection page.');
+        alert('No treasure hunt selected! Returning to selection page.'); // Alert if no game was selected
         window.location.href = 'index.html'; // Go back to list.html after completed treasureHunt
     }
 });
