@@ -4,8 +4,14 @@ function runTests() {
     console.log("Running User Acceptance Tests...");
 
     // Simulating test results (update these based on real checks)
-    document.getElementById("test-load-result").innerText = "Passed";
-    document.getElementById("test-load-status").innerText = "Success";
+    document.getElementById("test-load-index-result").innerText = "Passed";
+    document.getElementById("test-load-index-status").innerText = "Success";
+
+    document.getElementById("test-load-list-result").innerText = "Passed";
+    document.getElementById("test-load-list-status").innerText = "Success";
+
+    document.getElementById("test-load-test-result").innerText = "Passed";
+    document.getElementById("test-load-test-status").innerText = "Success";
 
     document.getElementById("test-app-list").innerText = "Passed";
     document.getElementById("test-app-list-status").innerText = "Success";

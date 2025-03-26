@@ -77,64 +77,80 @@
                 <th>Status</th>
             </tr>
             <tr>
-                <td>Page Load</td>
+                <td>Landing Page (index)</td>
                 <td>Open index.html</td>
                 <td>Page loads correctly</td>
-                <td id="test-load-result">Pending</td>
-                <td id="test-load-status">-</td>
+                <td id="test-load-index-result">Pending</td>
+                <td id="test-load-index-status">-</td>
             </tr>
             <tr>
-                <td>List</td>
-                <td>When we tapping lists button</td>
-                <td>Shows treasureHunts</td>
+                <td>Landing Page (list)</td>
+                <td>Open list.html</td>
+                <td>Page loads correctly, treasureHunt listed</td>
+                <td id="test-load-list-result">Pending</td>
+                <td id="test-load-list-status">-</td>
+            </tr>
+
+            <tr>
+                <td>Landing Page (test)</td>
+                <td>Open test.html</td>
+                <td>Page loads correctly</td>
+                <td id="test-load-test-result">Pending</td>
+                <td id="test-load-test-status">-</td>
+            </tr>
+            <tr>
+                <td>Landing Page (LoadHunts)</td>
+                <td>Open Treasure Hunts</td>
+                <td>List page loads correctly, treasureHunts listed</td>
                 <td id="test-app-list">Pending</td>
                 <td id="test-app-list-status">-</td>
             </tr>
             <tr>
                 <td>Start Hunt</td>
                 <td>Choose a hunt and click "Start"</td>
-                <td>Redirects to app.html</td>
+                <td>Redirects to start.html and asks username</td>
                 <td id="test-start-result">Pending</td>
                 <td id="test-start-status">-</td>
             </tr>
             <tr>
                 <td>Question</td>
-                <td>After filling in our username</td>
-                <td>Expect to receive a question from API</td>
+                <td>After filling in your username</td>
+                <td>Expect to be redirected to questions page with first questions loaded</td>
                 <td id="test-fetch-question">Pending</td>
                 <td id="test-fetch-question-status">-</td>
             </tr>
             <tr>
-                <td>Answer</td>
-                <td>After filling in our username</td>
-                <td>Expect to receive a question from API</td>
+                <td>Question (Answer)</td>
+                <td>After answering the question</td>
+                <td>Expect to receive a next question or bad answer or leaderboard will load after last question</td>
                 <td id="test-fetch-answer">Pending</td>
                 <td id="test-fetch-answer-status">-</td>
             </tr>
+
             <tr>
-                <td>location</td>
+                <td>Question (Location)</td>
                 <td>Press the button in questions (requires location)</td>
                 <td>Location updates correctly and showing coordinates</td>
                 <td id="test-location-result">Pending</td>
                 <td id="test-location-status">-</td>
             </tr>
             <tr>
-                <td>Skip</td>
+                <td>Question (Skip)</td>
                 <td>If user don't know answer of some questions</td>
                 <td>After press skip question should be skipped and take 5 points away</td>
                 <td id="test-fetch-skip">Pending</td>
                 <td id="test-fetch-skip-status">-</td>
             </tr>
             <tr>
-                <td>Score</td>
-                <td>It works if user answering correclty.</td>
+                <td>Question (Score)</td>
+                <td>It checks if answer is correct or incorrect.</td>
                 <td>Increasing and decreasing score when user answering the question</td>
                 <td id="test-fetch-score">Pending</td>
                 <td id="test-fetch-score-status">-</td>
             </tr>
             <tr>
                 <td>Leaderboard</td>
-                <td>Finish hunt and check leaderboard</td>
+                <td>After finishing hunt shows leaderboard</td>
                 <td>Leaderboard displays correctly</td>
                 <td id="test-leaderboard-result">Pending</td>
                 <td id="test-leaderboard-status">-</td>
