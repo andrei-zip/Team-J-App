@@ -137,7 +137,7 @@ async function Leaderboard() {
     let sessionId = session || sessionStorage.getItem('session');
     let treasureHuntId = sessionStorage.getItem('selectedTreasureHuntId');
 
-    // Проверяем, какой параметр передавать
+    // Checking which parameter to pass
     let queryParam = sessionId ? `session=${sessionId}` : `treasure-hunt-id=${treasureHuntId}`;
 
     try {
