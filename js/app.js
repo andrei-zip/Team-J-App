@@ -25,7 +25,7 @@ async function startHunt(playerName, appName, treasureHuntId) {
             fetchQuestion(); // Fetch the first question
         } else {
             // alert('Error starting hunt: ' + (data.errorMessages || 'Unknown error')); // Show error message
-            showCustomAlert('Error starting hunt: ' + (data.errorMessages || 'Unknown error'));
+            showCustomAlert('Error starting hunts: ' + (data.errorMessages || 'Unknown error'));
         }
     } catch (error) {
         console.error('Network error while starting hunt:', error); // Log network error
